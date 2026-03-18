@@ -25,12 +25,14 @@ export default function FaqAccordion({ title, items }: FaqAccordionProps) {
             <article className="faq-item" key={item.question}>
               <button
                 type="button"
-                className="faq-question"
+                className={`faq-question${isOpen ? " open" : ""}`}
                 aria-expanded={isOpen}
                 onClick={() => setOpenIndex((current) => (current === index ? -1 : index))}
               >
                 <span>{item.question}</span>
-                <span>{isOpen ? "●" : "○"}</span>
+                <span className="faq-indicator" aria-hidden>
+                  {isOpen ? "−" : "+"}
+                </span>
               </button>
               {isOpen ? <p className="faq-answer">{item.answer}</p> : null}
             </article>

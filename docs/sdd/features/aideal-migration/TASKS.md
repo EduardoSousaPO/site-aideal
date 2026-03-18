@@ -4,7 +4,9 @@
 - **Feature ID**: FEAT-001
 - **SPEC**: [SPEC.md](./SPEC.md)
 - **PLAN**: [PLAN.md](./PLAN.md)
+- **STATUS**: [STATUS.md](./STATUS.md) — visão geral do que foi feito e o que falta
 - **Data**: 2026-03-18
+- **Última atualização**: 2026-03-18
 
 ## Legenda de Status
 - ⬜ Pendente
@@ -13,12 +15,26 @@
 - ⏸️ Bloqueada
 - ❌ Cancelada
 
+## Resumo Rápido
+
+| Fase | Concluídas | Pendentes | Total |
+|------|------------|-----------|-------|
+| Setup | 3 | 0 | 3 |
+| Core | 3 | 0 | 3 |
+| UI | 4 | 0 | 4 |
+| Avançado | 4 | 1 | 5 |
+| Design | 3 | 0 | 3 |
+| Deploy | 0 | 3 | 3 |
+| **Total** | **17** | **4** | **21** |
+
+---
+
 ## Tasks
 
 ### Fase 1: Setup e Infraestrutura
 
 #### TASK-001: Inicializar projeto Next.js 14
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P0
 - **Estimativa**: 30 min
 - **Dependências**: Nenhuma
@@ -26,7 +42,7 @@
 - **Critério de Done**: `npm run dev` roda sem erros
 
 #### TASK-002: Configurar Supabase
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P0
 - **Estimativa**: 20 min
 - **Dependências**: TASK-001
@@ -34,7 +50,7 @@
 - **Critério de Done**: Cliente Supabase conecta, tabela existe
 
 #### TASK-003: Copiar conteúdo e mídia
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P0
 - **Estimativa**: 15 min
 - **Dependências**: TASK-001
@@ -44,7 +60,7 @@
 ### Fase 2: Core (Conteúdo e Roteamento)
 
 #### TASK-004: Criar lib de conteúdo
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P0
 - **Estimativa**: 45 min
 - **Dependências**: TASK-003
@@ -52,7 +68,7 @@
 - **Critério de Done**: Funções retornam dados corretos para todas as páginas
 
 #### TASK-005: Implementar roteamento dinâmico
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P0
 - **Estimativa**: 1h
 - **Dependências**: TASK-004
@@ -60,7 +76,7 @@
 - **Critério de Done**: Todas as 21 páginas acessíveis por slug
 
 #### TASK-006: Implementar página Home
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P0
 - **Estimativa**: 1h
 - **Dependências**: TASK-004
@@ -70,7 +86,7 @@
 ### Fase 3: Componentes e UI
 
 #### TASK-007: Criar Header e Footer
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P0
 - **Estimativa**: 1h
 - **Dependências**: TASK-004
@@ -78,7 +94,7 @@
 - **Critério de Done**: Navegação funcional em todas as páginas
 
 #### TASK-008: Componente WhatsAppButton
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P1
 - **Estimativa**: 20 min
 - **Dependências**: Nenhuma
@@ -86,7 +102,7 @@
 - **Critério de Done**: Botões abrem WhatsApp corretamente
 
 #### TASK-009: Componente CookieConsent
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P1
 - **Estimativa**: 45 min
 - **Dependências**: TASK-001
@@ -94,7 +110,7 @@
 - **Critério de Done**: Banner exibido na primeira visita, preferência salva
 
 #### TASK-010: Layout e design system
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P1
 - **Estimativa**: 1h
 - **Dependências**: TASK-001
@@ -104,7 +120,7 @@
 ### Fase 4: Funcionalidades Avançadas
 
 #### TASK-011: Formulário de contato e API
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P1
 - **Estimativa**: 1h
 - **Dependências**: TASK-002
@@ -112,7 +128,7 @@
 - **Critério de Done**: Envio salva no Supabase, feedback ao usuário
 
 #### TASK-012: Páginas PDF
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P1
 - **Estimativa**: 45 min
 - **Dependências**: TASK-005
@@ -120,7 +136,7 @@
 - **Critério de Done**: PDFs acessíveis nas páginas corretas
 
 #### TASK-012b: Componente FAQ Accordion
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P1
 - **Estimativa**: 45 min
 - **Dependências**: TASK-005
@@ -129,6 +145,7 @@
 
 #### TASK-013: Integração Trustindex (Google Reviews)
 - **Status**: ⬜
+- **Nota**: Atualmente usa REVIEW_CARDS estáticos. Integrar widget Trustindex quando disponível.
 - **Prioridade**: P2
 - **Estimativa**: 30 min
 - **Dependências**: TASK-006
@@ -136,7 +153,7 @@
 - **Critério de Done**: Reviews do Google exibidos na home
 
 #### TASK-014: SEO por página
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P1
 - **Estimativa**: 30 min
 - **Dependências**: TASK-005
@@ -146,7 +163,7 @@
 ### Fase 5: Design Moderno e Animações
 
 #### TASK-015: Instalar e configurar GSAP
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P2
 - **Estimativa**: 30 min
 - **Dependências**: TASK-001
@@ -154,7 +171,7 @@
 - **Critério de Done**: GSAP disponível para animações
 
 #### TASK-016: Animações de scroll e entrada
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P2
 - **Estimativa**: 2h
 - **Dependências**: TASK-015, TASK-006
@@ -162,7 +179,7 @@
 - **Critério de Done**: Home e páginas de serviço com animações suaves
 
 #### TASK-017: Backgrounds artísticos (Canvas/WebGL)
-- **Status**: ⬜
+- **Status**: ✅
 - **Prioridade**: P2
 - **Estimativa**: 2h
 - **Dependências**: TASK-001
@@ -195,14 +212,38 @@
 - **Descrição**: Otimizar imagens, lazy load, verificar Core Web Vitals. Lighthouse Performance > 80.
 - **Critério de Done**: Lighthouse verde em Performance
 
-## Resumo
+## Resumo Detalhado
 
-| Fase | Total | Pendente | Em Progresso | Concluída |
-|------|-------|----------|-------------|-----------|
-| Setup | 3 | 3 | 0 | 0 |
-| Core | 3 | 3 | 0 | 0 |
-| UI | 4 | 4 | 0 | 0 |
-| Avançado | 5 | 5 | 0 | 0 |
-| Design | 3 | 3 | 0 | 0 |
-| Deploy | 3 | 3 | 0 | 0 |
-| **Total** | **21** | **21** | **0** | **0** |
+| Fase | Total | Pendente | Concluída |
+|------|-------|----------|-----------|
+| Setup | 3 | 0 | 3 |
+| Core | 3 | 0 | 3 |
+| UI | 4 | 0 | 4 |
+| Avançado | 5 | 1 | 4 |
+| Design | 3 | 0 | 3 |
+| Deploy | 3 | 3 | 0 |
+| **Total** | **21** | **4** | **17** |
+
+### Pendências
+- **TASK-013**: Trustindex (reviews Google) — usa cards estáticos por enquanto
+- **TASK-018**: Testes manuais e ajustes
+- **TASK-019**: Deploy na Vercel
+- **TASK-020**: Otimização e Lighthouse
+
+---
+
+## Execução Complementar (Frontend Design)
+
+### Sprint A (concluído)
+- Home: métricas institucionais + refinamento de CTA e hero
+- Sobre nós: narrativa em módulos + valores com descrição
+- Contato: badge de SLA + atalhos de canal
+- ServicePage: blocos técnicos e tratamento especial para Atestado Técnico
+
+### Sprint B (concluído)
+- Páginas legais (`politica-de-privacidade`, `termos-de-uso`) com layout documental
+- Narrativa técnica padronizada para serviços (aplicações e segmentos)
+
+### Sprint C (concluído)
+- Páginas PDF com resumo, metadados e fallback de visualização
+- Refino de microinterações e acessibilidade (FAQ, focus-visible, reduced-motion)

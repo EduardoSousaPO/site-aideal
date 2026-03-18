@@ -150,3 +150,25 @@ CREATE POLICY "Allow authenticated select" ON contact_submissions
 | Backend | Baixa | API simples, Supabase já configurado |
 | Frontend | Alta | 21 páginas, design custom, animações, componentes |
 | Database | Baixa | Uma tabela, RLS simples |
+
+---
+
+## Status de Implementação (2026-03-18)
+
+| Componente | Status |
+|------------|--------|
+| `lib/content.ts` | ✅ |
+| `lib/supabase.ts` | ✅ |
+| `app/page.tsx` (Home) | ✅ |
+| `app/[slug]/page.tsx` | ✅ |
+| `app/contato/page.tsx` | ✅ |
+| `app/api/contact/route.ts` | ✅ |
+| Header, Footer | ✅ |
+| WhatsAppButton, CookieConsent | ✅ |
+| FaqAccordion, HypnoticBackground | ✅ |
+| ServicePage, AboutPage, GenericPage, PdfPage | ✅ |
+| Trustindex | ⬜ (usa REVIEW_CARDS estáticos) |
+| Deploy Vercel | ⬜ |
+| Lighthouse > 80 | ⬜ |
+
+Ver [STATUS.md](./STATUS.md) e [TASKS.md](./TASKS.md) para detalhes.

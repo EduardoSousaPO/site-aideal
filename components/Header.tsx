@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,6 +12,8 @@ import {
   WHATSAPP_URL,
 } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+
+const DROPDOWN_CLOSE_DELAY_MS = 280;
 
 function MenuIcon() {
   return (
@@ -42,6 +44,29 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openDropdown = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setDesktopDropdownOpen(true);
+  }, []);
+
+  const scheduleClose = useCallback(() => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setDesktopDropdownOpen(false);
+      closeTimeoutRef.current = null;
+    }, DROPDOWN_CLOSE_DELAY_MS);
+  }, []);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  }, []);
 
   const isRouteActive = useMemo(
     () => (href: string) => {
@@ -73,8 +98,8 @@ export default function Header() {
                 <li
                   className={cn("dropdown-shell", desktopDropdownOpen && "open")}
                   key={item.label}
-                  onMouseEnter={() => setDesktopDropdownOpen(true)}
-                  onMouseLeave={() => setDesktopDropdownOpen(false)}
+                  onMouseEnter={openDropdown}
+                  onMouseLeave={scheduleClose}
                 >
                   <button
                     type="button"
@@ -83,7 +108,11 @@ export default function Header() {
                   >
                     {item.label} <ChevronDownIcon />
                   </button>
-                  <div className="dropdown-panel">
+                  <div
+                    className="dropdown-panel"
+                    onMouseEnter={cancelClose}
+                    onMouseLeave={scheduleClose}
+                  >
                     {SERVICE_DROPDOWN.map((serviceItem) => (
                       <Link className="dropdown-item" key={serviceItem.href} href={serviceItem.href}>
                         {serviceItem.label}

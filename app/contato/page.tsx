@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
-import { CONTACT_INFO } from "@/lib/site-config";
+import { CONTACT_INFO, WHATSAPP_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -14,7 +15,7 @@ export default function ContactPage() {
       <section className="section-block page-hero">
         <div className="page-hero-inner">
           <span className="pill-badge">Atendimento em todo o Brasil</span>
-          <h1 className="display-title section-title" style={{ marginTop: 18 }}>
+          <h1 className="display-title section-title" style={{ marginTop: 18, color: "#fff" }}>
             Solicite um
             <span className="highlight"> Orçamento</span>
           </h1>
@@ -22,6 +23,9 @@ export default function ContactPage() {
             Envie os dados do seu projeto e nossa equipe comercial retorna com uma proposta
             técnica aderente ao seu cenário de operação industrial.
           </p>
+          <div className="contact-sla" data-reveal>
+            Retorno comercial em até 1 dia útil.
+          </div>
         </div>
       </section>
 
@@ -30,6 +34,17 @@ export default function ContactPage() {
           <h2 className="display-title section-title" style={{ fontSize: "2.2rem" }}>
             Canais de Contato
           </h2>
+          <div className="contact-quick-actions">
+            <Link className="contact-quick-link" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              WhatsApp
+            </Link>
+            <Link className="contact-quick-link" href={CONTACT_INFO.phoneHref}>
+              Ligar agora
+            </Link>
+            <Link className="contact-quick-link" href={CONTACT_INFO.emailHref}>
+              Enviar e-mail
+            </Link>
+          </div>
           <div className="contact-list">
             <p>
               <strong>Telefone:</strong> <a href={CONTACT_INFO.phoneHref}>{CONTACT_INFO.phone}</a>

@@ -6,10 +6,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function ScrollAnimations() {
   useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
+      revealElements.forEach((element) => {
+        gsap.set(element, { autoAlpha: 1, y: 0 });
+      });
+      return;
+    }
+
     gsap.registerPlugin(ScrollTrigger);
 
     const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
     revealElements.forEach((element, index) => {
+      const staggerDelay = (index % 8) * 0.02;
       gsap.fromTo(
         element,
         { autoAlpha: 0, y: 34 },
@@ -17,7 +27,7 @@ export default function ScrollAnimations() {
           autoAlpha: 1,
           y: 0,
           duration: 0.72,
-          delay: index * 0.03,
+          delay: staggerDelay,
           ease: "power2.out",
           scrollTrigger: {
             trigger: element,
@@ -43,6 +53,13 @@ export default function ScrollAnimations() {
     });
 
     const tiltElements = gsap.utils.toArray<HTMLElement>("[data-tilt]");
+    const enableTilt = window.matchMedia("(min-width: 1024px)").matches;
+    if (!enableTilt || tiltElements.length === 0) {
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
+    }
+
     const onPointerMove = (event: PointerEvent) => {
       for (const element of tiltElements) {
         const rect = element.getBoundingClientRect();
@@ -79,10 +96,12 @@ export default function ScrollAnimations() {
 
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerLeave);
+    window.addEventListener("pointerleave", onPointerLeave);
 
     return () => {
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerup", onPointerLeave);
+      window.removeEventListener("pointerleave", onPointerLeave);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);

@@ -4,7 +4,8 @@
 - **Feature ID**: FEAT-001
 - **Autor**: SDD
 - **Data**: 2026-03-18
-- **Status**: Draft
+- **Status**: Em desenvolvimento (≈80% concluído)
+- **Última atualização**: 2026-03-18
 
 ## Resumo
 
@@ -89,15 +90,15 @@ Recriar o site em Next.js 14+ com React, utilizando o conteúdo extraído via wp
 
 ## Critérios de Aceite
 
-- [ ] CA-01: Todas as 21 páginas acessíveis e com conteúdo correto
-- [ ] CA-02: Imagens carregando com Next/Image (otimização automática)
-- [ ] CA-03: Menu e footer navegáveis em todas as páginas
-- [ ] CA-04: Botões WhatsApp abrindo conversa correta
-- [ ] CA-05: Formulário de contato salvando no Supabase
-- [ ] CA-06: Cookie consent exibido e funcional
-- [ ] CA-07: Meta tags SEO por página
-- [ ] CA-08: Páginas PDF exibindo ou permitindo download
-- [ ] CA-09: Site responsivo (mobile, tablet, desktop)
+- [x] CA-01: Todas as 21 páginas acessíveis e com conteúdo correto
+- [x] CA-02: Imagens carregando com Next/Image (otimização automática)
+- [x] CA-03: Menu e footer navegáveis em todas as páginas
+- [x] CA-04: Botões WhatsApp abrindo conversa correta
+- [x] CA-05: Formulário de contato salvando no Supabase
+- [x] CA-06: Cookie consent exibido e funcional
+- [x] CA-07: Meta tags SEO por página
+- [x] CA-08: Páginas PDF exibindo ou permitindo download
+- [x] CA-09: Site responsivo (mobile, tablet, desktop)
 - [ ] CA-10: Deploy na Vercel funcionando
 - [ ] CA-11: Lighthouse Performance > 80
 
@@ -123,6 +124,12 @@ Recriar o site em Next.js 14+ com React, utilizando o conteúdo extraído via wp
 | PDFs muito grandes | Baixa | Baixo | Hospedar em CDN, usar viewer leve |
 | Menu sem estrutura do WP | Alta | Baixo | Reconstruir manualmente a partir das páginas |
 | Slug duplicado (acesso-por-cordas) | Média | Médio | Usar slug `hidrojateamento` para página clonada (DEC-001) |
+
+## Documentos SDD
+
+- [STATUS.md](./STATUS.md) — O que foi feito e o que falta
+- [TASKS.md](./TASKS.md) — Lista de tasks com status
+- [PLAN.md](./PLAN.md) — Arquitetura técnica
 
 ## Referências
 

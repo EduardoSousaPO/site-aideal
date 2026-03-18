@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import HypnoticBackground from "@/components/HypnoticBackground";
 import type { PageContent } from "@/lib/content";
 import { REVIEW_CARDS, WHATSAPP_URL } from "@/lib/site-config";
 
@@ -11,14 +10,14 @@ type HomeSectionsProps = {
 };
 
 function serviceCardDescription(page: PageContent): string {
-  return (
+  const raw =
     page.paragraphs.find(
       (paragraph) =>
         paragraph.length > 70 &&
         !paragraph.includes("?") &&
         !paragraph.toLocaleLowerCase("pt-BR").includes("entre em contato"),
-    ) ?? "Solução técnica com execução especializada para ambientes industriais exigentes."
-  );
+    ) ?? "Solução técnica com execução especializada para ambientes industriais exigentes.";
+  return raw.length > 140 ? `${raw.slice(0, 137).trim()}...` : raw;
 }
 
 function serviceDisplayName(page: PageContent): string {
@@ -38,28 +37,44 @@ export default function HomeSections({
     .map((item) => item.replace("✅", "").trim())
     .slice(0, 3);
   const introParagraph = homePage.paragraphs[0] ?? "";
-  const heroHeading = (homePage.headings[0]?.text ?? "Especialistas em pintura industrial")
-    .replace("emPintura", "em pintura")
-    .replace("Industrial", "industrial");
+  const rawHeading = homePage.headings[0]?.text ?? "Especialistas em pintura industrial";
+  const heroHeading = rawHeading.replace(/emPintura/gi, "em pintura").trim();
+  const headingParts = heroHeading.split(/\s+industrial\s+/i);
+  const heroMetrics = [
+    { value: "20+", label: "anos de atuação industrial" },
+    { value: "NR-35 / NR-33", label: "protocolos de segurança" },
+    { value: "Brasil inteiro", label: "cobertura operacional" },
+  ];
 
   const cards = servicePages.slice(0, 9);
-  const repeatedLogos = [...clientLogos, ...clientLogos];
 
   return (
     <div className="container">
       <section className="section-block hero-shell">
-        <div className="hero-grid">
-          <HypnoticBackground />
-
+        <div className="hero-grid hero-grid--wordpress">
+          <div className="hero-bg-image">
+            <Image
+              src="/assets/bandesk5.webp"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+          </div>
+          <div className="hero-overlay" />
           <div className="hero-content" data-reveal>
-            <span className="pill-badge">+ de 20 anos atendendo todo o Brasil</span>
+            <span className="pill-badge pill-badge--blue">+ de 20 anos atendendo todo o Brasil</span>
             <h1 className="display-title hero-title">
-              {heroHeading.split("industrial").map((part, index, list) => (
-                <span key={`${part}-${index}`}>
-                  {part}
-                  {index < list.length - 1 ? <span className="highlight">industrial</span> : null}
-                </span>
-              ))}
+              {headingParts.length > 1 ? (
+                <>
+                  {headingParts[0]}
+                  <span className="highlight"> industrial</span>
+                  {headingParts[1]}
+                </>
+              ) : (
+                heroHeading
+              )}
             </h1>
             <p className="hero-text">{introParagraph}</p>
             <div className="hero-actions">
@@ -70,25 +85,49 @@ export default function HomeSections({
                 Conheça os serviços
               </Link>
             </div>
-            <div className="hero-seal">Satisfação garantida desde 1997</div>
+            <div className="hero-seal hero-seal--gold">Satisfação garantida desde 1997</div>
           </div>
+        </div>
+      </section>
 
-          <div className="hero-media" data-parallax>
-            <figure className="hero-media-frame" data-reveal>
-              <Image
-                src="/assets/hero-paint.webp"
-                alt="Equipe da A Ideal em pintura industrial"
-                width={1000}
-                height={667}
-                priority
-              />
-            </figure>
+      <section className="home-metrics" aria-label="Indicadores institucionais">
+        {heroMetrics.map((metric) => (
+          <article className="metric-card" key={metric.label} data-reveal>
+            <strong>{metric.value}</strong>
+            <span>{metric.label}</span>
+          </article>
+        ))}
+      </section>
+
+      <section className="section-block especialistas-section">
+        <div className="especialistas-grid">
+          <div className="especialistas-media" data-reveal>
+            <Image
+              src="/assets/2149878738.webp"
+              alt="Detalhe de pintura industrial com equipamento especializado"
+              width={600}
+              height={400}
+              style={{ width: "100%", height: "auto", borderRadius: 16 }}
+            />
+          </div>
+          <div className="especialistas-content" data-reveal>
+            <h2 className="display-title section-title">
+              Especialistas em
+              <span className="highlight"> Pintura Industrial</span>
+            </h2>
+            <p className="especialistas-text">
+              Somos especialistas em pintura industrial, oferecendo soluções técnicas de alta
+              performance, durabilidade e acabamento superior para ambientes industriais exigentes.
+            </p>
+            <Link className="btn-outline" href="/sobre-nos">
+              Conheça nossa metodologia
+            </Link>
           </div>
         </div>
       </section>
 
       <section className="section-block" id="servicos">
-        <header className="section-header" data-reveal>
+        <header className="section-header section-header--centered" data-reveal>
           <h2 className="display-title section-title">
             Conheça os nossos
             <span className="highlight"> Serviços</span>
@@ -135,6 +174,7 @@ export default function HomeSections({
             alt="Mapa do Brasil para atendimento nacional"
             width={1080}
             height={1080}
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
         <div data-reveal>
@@ -156,17 +196,15 @@ export default function HomeSections({
           </ul>
           <Link
             className="btn-primary"
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
+            href="/contato"
             style={{ marginTop: 16 }}
           >
-            Faça um orçamento
+            Falar com especialista
           </Link>
         </div>
       </section>
 
-      <section className="section-block" id="clientes">
+      <section className="section-block clients-section" id="clientes">
         <header className="section-header" data-reveal>
           <h2 className="display-title section-title">
             Alguns
@@ -177,14 +215,12 @@ export default function HomeSections({
             base confiam na execução da A Ideal.
           </p>
         </header>
-        <div className="logo-marquee" data-reveal>
-          <div className="logo-track">
-            {repeatedLogos.map((logoPath, index) => (
-              <div className="logo-pill" key={`${logoPath}-${index}`}>
-                <Image src={logoPath} alt="Logotipo de cliente da A Ideal" width={130} height={56} />
-              </div>
-            ))}
-          </div>
+        <div className="logo-grid" data-reveal>
+          {clientLogos.map((logoPath) => (
+            <div className="logo-card" key={logoPath}>
+              <Image src={logoPath} alt="Logotipo de cliente da A Ideal" width={140} height={70} style={{ objectFit: "contain" }} />
+            </div>
+          ))}
         </div>
       </section>
 
