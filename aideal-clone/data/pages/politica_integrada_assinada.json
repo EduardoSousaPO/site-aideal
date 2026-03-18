@@ -1,0 +1,21 @@
+{
+  "id": 1211,
+  "slug": "politica_integrada_assinada",
+  "title": "Politica_Integrada_assinada",
+  "content": "\t\t<div data-elementor-type=\"wp-page\" data-elementor-id=\"1211\" class=\"elementor elementor-1211\">\n\t\t\t\t<div class=\"elementor-element elementor-element-592482f e-flex e-con-boxed e-con e-parent\" data-id=\"592482f\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t<div class=\"elementor-element elementor-element-5d00df0 e-con-full e-flex e-con e-child\" data-id=\"5d00df0\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-7bbe0ef elementor-widget__width-inherit elementor-widget elementor-widget-heading\" data-id=\"7bbe0ef\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"heading.default\">\n\t\t\t\t<div class=\"elementor-widget-container\">\n\t\t\t\t\t<h2 class=\"elementor-heading-title elementor-size-default\">Política<font color=\"#0B80DF\"> Integrada</font></h2>\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-b293162 e-flex e-con-boxed e-con e-parent\" data-id=\"b293162\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t",
+  "excerpt": "<p>Política Integrada</p>\n",
+  "status": "publish",
+  "link": "https://aideal.com.br/politica_integrada_assinada/",
+  "date": "2025-09-26T16:59:26",
+  "modified": "2026-01-15T13:50:52",
+  "parent": 0,
+  "menu_order": 0,
+  "featured_media": 0,
+  "featured_image_url": null,
+  "seo": {
+    "yoast_title": null,
+    "yoast_description": null,
+    "og_image": null
+  },
+  "template": "elementor_canvas"
+}

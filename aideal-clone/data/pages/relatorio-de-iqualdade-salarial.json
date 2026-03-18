@@ -1,0 +1,21 @@
+{
+  "id": 1234,
+  "slug": "relatorio-de-iqualdade-salarial",
+  "title": "Relatório de Igualdade Salarial",
+  "content": "\t\t<div data-elementor-type=\"wp-page\" data-elementor-id=\"1234\" class=\"elementor elementor-1234\">\n\t\t\t\t<div class=\"elementor-element elementor-element-47973c2 e-flex e-con-boxed e-con e-parent\" data-id=\"47973c2\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t<div class=\"elementor-element elementor-element-0367509 e-con-full e-flex e-con e-child\" data-id=\"0367509\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-7947f47 elementor-widget__width-inherit elementor-widget elementor-widget-heading\" data-id=\"7947f47\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"heading.default\">\n\t\t\t\t<div class=\"elementor-widget-container\">\n\t\t\t\t\t<h2 class=\"elementor-heading-title elementor-size-default\">Relatório de <font color=\"#0B80DF\"> Igualdade Salarial</font></h2>\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-b293162 e-flex e-con-boxed e-con e-parent\" data-id=\"b293162\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t",
+  "excerpt": "<p>Relatório de Igualdade Salarial</p>\n",
+  "status": "publish",
+  "link": "https://aideal.com.br/relatorio-de-iqualdade-salarial/",
+  "date": "2025-09-30T13:39:43",
+  "modified": "2026-01-15T13:52:39",
+  "parent": 0,
+  "menu_order": 0,
+  "featured_media": 0,
+  "featured_image_url": null,
+  "seo": {
+    "yoast_title": null,
+    "yoast_description": null,
+    "og_image": null
+  },
+  "template": "elementor_canvas"
+}
