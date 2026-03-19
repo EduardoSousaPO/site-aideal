@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Sora } from "next/font/google";
 import "@/app/globals.css";
 import Header from "@/components/Header";
@@ -18,6 +18,12 @@ const bodyFont = Sora({
   variable: "--font-body",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

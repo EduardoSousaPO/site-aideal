@@ -10,21 +10,6 @@ type HomeSectionsProps = {
   clientLogos: string[];
 };
 
-const SERVICE_ICONS: Record<string, string> = {
-  "pintura-industrial-anticorrosiva": "🎨",
-  "jateamento-abrasivo": "💨",
-  "hidrojateamento": "💧",
-  "acesso-por-cordas": "🪢",
-  "isolamento-termico": "🔥",
-  "piso-industrial-epoxy": "🏭",
-  "piso-industrial-mma": "🔩",
-  "piso-industrial-uretano": "⚙️",
-  "revestimento-de-borracha-liquida": "🛡️",
-  "montagem-andaime-tobo-roll": "🏗️",
-  "montagem-de-quick-deck": "🔧",
-  "atestado-tecnico": "📋",
-};
-
 function serviceCardDescription(page: PageContent): string {
   const raw =
     page.paragraphs.find(
@@ -95,42 +80,18 @@ export default function HomeSections({
 
         {/* Right: imagem */}
         <div className="hero-split-media">
-          <div className="hero-split-media-overlay" />
-          <Image
-            src="/assets/bandesk5.webp"
-            alt="Aplicação de pintura industrial pela equipe A Ideal"
-            fill
-            priority
-            style={{ objectFit: "cover", objectPosition: "left center" }}
-          />
-          <div className="hero-split-badge">
-            <strong>+25</strong>
-            anos de<br />mercado
+          <div className="hero-split-media-stage">
+            <div className="hero-split-media-overlay" />
+            <Image
+              src="/assets/bandesk5.webp"
+              alt="Aplicação de pintura industrial pela equipe A Ideal"
+              fill
+              priority
+              style={{ objectFit: "contain", objectPosition: "center center" }}
+            />
           </div>
         </div>
       </section>
-
-      {/* ─── STATS BAR ───────────────────────────────────────────── */}
-      <div className="stats-bar">
-        <div className="stats-bar-inner container">
-          <div className="stats-bar-item" data-reveal>
-            <span className="stats-bar-number">+500</span>
-            <span className="stats-bar-label">Projetos executados</span>
-          </div>
-          <div className="stats-bar-item" data-reveal>
-            <span className="stats-bar-number">+80</span>
-            <span className="stats-bar-label">Clientes atendidos</span>
-          </div>
-          <div className="stats-bar-item" data-reveal>
-            <span className="stats-bar-number">12</span>
-            <span className="stats-bar-label">Serviços especializados</span>
-          </div>
-          <div className="stats-bar-item" data-reveal>
-            <span className="stats-bar-number">100%</span>
-            <span className="stats-bar-label">Cobertura nacional</span>
-          </div>
-        </div>
-      </div>
 
       {/* ─── WAVE (dark → white) ─────────────────────────────────── */}
       <WaveSep fill="#ffffff" bg="#02264a" />
@@ -212,9 +173,6 @@ export default function HomeSections({
           <div className="services-grid">
             {cards.map((page) => (
               <article className="service-card-dark" key={page.slug} data-reveal>
-                <div className="service-card-dark-icon">
-                  {SERVICE_ICONS[page.slug] ?? "⚙️"}
-                </div>
                 <h3>{serviceDisplayName(page)}</h3>
                 <p>{serviceCardDescription(page)}</p>
                 <Link className="service-link" href={`/${page.slug}`}>

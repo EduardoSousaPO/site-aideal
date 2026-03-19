@@ -1,8 +1,9 @@
 import Link from "next/link";
+import AboutValueIcon from "@/components/AboutValueIcons";
 import SafeImage from "@/components/SafeImage";
 import WaveSep from "@/components/WaveSep";
 import type { PageContent } from "@/lib/content";
-import { WHATSAPP_URL } from "@/lib/site-config";
+import { ABOUT_VALUE_ITEMS, WHATSAPP_URL } from "@/lib/site-config";
 
 type AboutPageProps = {
   page: PageContent;
@@ -11,9 +12,7 @@ type AboutPageProps = {
 export default function AboutPage({ page }: AboutPageProps) {
   const summaryParagraphs = page.paragraphs.filter((paragraph) => paragraph.length > 20).slice(0, 8);
   const primaryImage = page.images[0];
-  const iconItems = page.images.slice(1, 7);
   const secondaryImage = page.images.find((image) => image.width && image.width > 200 && image !== primaryImage);
-  const valueLabels = page.paragraphs.filter((paragraph) => paragraph.length > 3 && paragraph.length <= 30).slice(0, 6);
   const introParagraph = summaryParagraphs[0];
   const missionParagraph = summaryParagraphs[1];
   const visionParagraph = summaryParagraphs[2];
@@ -25,6 +24,14 @@ export default function AboutPage({ page }: AboutPageProps) {
       paragraph !== visionParagraph &&
       paragraph !== valueNarrative,
   );
+  const valueIcons = [
+    "responsabilidade-social",
+    "valorizacao-humana",
+    "transparencia",
+    "etica",
+    "qualidade",
+    "pontualidade",
+  ] as const;
 
   return (
     <>
@@ -33,7 +40,7 @@ export default function AboutPage({ page }: AboutPageProps) {
         <div className="container" style={{ paddingBottom: 0 }}>
           <div className="about-wp-grid">
             <article className="about-wp-copy" data-reveal>
-              <span className="pill-badge">Quem Somos</span>
+              <span className="about-hero-eyebrow">Quem somos</span>
               <h1 className="display-title about-wp-title">
                 <span>Especialistas em</span>
                 <span className="highlight"> Pintura Industrial</span>
@@ -85,18 +92,10 @@ export default function AboutPage({ page }: AboutPageProps) {
             </div>
           </header>
           <div className="about-values about-values--icons">
-            {iconItems.map((image, index) => {
-              const label = valueLabels[index] ?? `Valor ${index + 1}`;
+            {ABOUT_VALUE_ITEMS.map((label, index) => {
               return (
-                <article className="about-icon-card" key={image.src} data-reveal>
-                  <SafeImage
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width ?? 75}
-                    height={image.height ?? 75}
-                    fallbackSrc="/assets/banner-oque-importa.png"
-                    style={{ width: 75, height: 75, objectFit: "contain" }}
-                  />
+                <article className="about-icon-card" key={label} data-reveal>
+                  <AboutValueIcon kind={valueIcons[index]} className="about-icon-symbol" />
                   <p>{label}</p>
                 </article>
               );
