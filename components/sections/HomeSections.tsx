@@ -228,19 +228,44 @@ export default function HomeSections({
           </p>
         </div>
 
-        <div style={{ overflow: "hidden" }}>
-          <div className="logo-track-dark">
-            {[...clientLogos, ...clientLogos].map((logoPath, idx) => (
-              <div className="logo-pill-dark" key={`${logoPath}-${idx}`}>
-                <Image
-                  src={logoPath}
-                  alt="Logotipo de cliente A Ideal"
-                  width={120}
-                  height={44}
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-            ))}
+        <div style={{ overflow: "hidden", display: "flex", flexDirection: "column", gap: 24 }}>
+          {/* Fileira 1: primeira metade dos logos */}
+          <div style={{ overflow: "hidden" }}>
+            <div className="logo-track-dark logo-track-row1">
+              {(() => {
+                const row1 = clientLogos.slice(0, Math.ceil(clientLogos.length / 2));
+                return [...row1, ...row1].map((logoPath, idx) => (
+                  <div className="logo-pill-dark" key={`row1-${logoPath}-${idx}`}>
+                    <Image
+                      src={logoPath}
+                      alt="Logotipo de cliente A Ideal"
+                      width={120}
+                      height={44}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </div>
+                ));
+              })()}
+            </div>
+          </div>
+          {/* Fileira 2: segunda metade dos logos (sem repetir os da fileira 1) */}
+          <div style={{ overflow: "hidden" }}>
+            <div className="logo-track-dark logo-track-row2">
+              {(() => {
+                const row2 = clientLogos.slice(Math.ceil(clientLogos.length / 2));
+                return [...row2, ...row2].map((logoPath, idx) => (
+                  <div className="logo-pill-dark" key={`row2-${logoPath}-${idx}`}>
+                    <Image
+                      src={logoPath}
+                      alt="Logotipo de cliente A Ideal"
+                      width={120}
+                      height={44}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </div>
+                ));
+              })()}
+            </div>
           </div>
         </div>
       </div>

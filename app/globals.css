@@ -835,11 +835,18 @@ img {
 
 .logo-track-dark {
   align-items: center;
-  animation: logo-marquee 40s linear infinite;
   display: flex;
   gap: 22px;
   padding-inline: 22px;
   width: max-content;
+}
+
+.logo-track-row1 {
+  animation: logo-marquee 40s linear infinite;
+}
+
+.logo-track-row2 {
+  animation: logo-marquee-reverse 42s linear infinite;
 }
 
 .logo-pill-dark {
@@ -2391,6 +2398,15 @@ img {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
