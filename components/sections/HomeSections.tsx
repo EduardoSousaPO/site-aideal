@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import IndustrialShowcasePanel from "@/components/IndustrialShowcasePanel";
 import WaveSep from "@/components/WaveSep";
 import type { PageContent } from "@/lib/content";
 import { REVIEW_CARDS, WHATSAPP_URL } from "@/lib/site-config";
@@ -99,25 +100,8 @@ export default function HomeSections({
       {/* ─── ESPECIALISTAS / ABOUT ───────────────────────────────── */}
       <section className="container section-block" style={{ paddingTop: 0 }}>
         <div className="especialistas-grid">
-          <div className="about-overlap" data-reveal>
-            <div className="about-overlap-img-main">
-              <Image
-                src="/assets/2149878738.webp"
-                alt="Equipe A Ideal aplicando revestimento anticorrosivo"
-                width={620}
-                height={440}
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-            <div className="about-overlap-img-secondary">
-              <Image
-                src="/assets/hero-paint.webp"
-                alt="Detalhe de pintura industrial com qualidade técnica"
-                width={380}
-                height={260}
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
+          <div data-reveal>
+            <IndustrialShowcasePanel />
           </div>
 
           <div className="especialistas-content" data-reveal style={{ paddingBottom: 48 }}>
@@ -188,7 +172,7 @@ export default function HomeSections({
       <WaveSep fill="#ffffff" bg="#02264a" />
 
       {/* ─── ATENDEMOS NO BRASIL ─────────────────────────────────── */}
-      <div className="map-section-wrap">
+      <div className="map-section-wrap" id="contato">
         <section className="container map-layout">
           <div data-reveal>
             <Image
@@ -225,7 +209,7 @@ export default function HomeSections({
                 </span>
               ))}
             </div>
-            <Link className="btn-primary" href="/contato" style={{ display: "inline-flex" }}>
+            <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer" style={{ display: "inline-flex" }}>
               Solicitar visita técnica
             </Link>
           </div>

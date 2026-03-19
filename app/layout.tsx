@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CookieConsent from "@/components/CookieConsent";
 import ScrollAnimations from "@/components/ScrollAnimations";
+import ScrollToHash from "@/components/ScrollToHash";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site-config";
 
 const displayFont = Bebas_Neue({
@@ -46,6 +47,7 @@ export default function RootLayout({
         <div className="site-shell">
           <Header />
           <ScrollAnimations />
+          <ScrollToHash />
           <main>{children}</main>
           <Footer />
           <WhatsAppButton />

@@ -50,21 +50,10 @@ export const MAIN_NAV = [
   { label: "Serviços", href: "#servicos", isDropdown: true },
   { label: "Atestado Técnico", href: "/atestado-tecnico" },
   { label: "Clientes", href: "/#clientes" },
-  { label: "Contato", href: "/contato" },
+  { label: "Contato", href: "/#contato" },
 ];
 
-export const MOBILE_EXTRA_LINKS = [
-  { label: "Missão - Visão - Valores", href: "/missao-visao-voleres" },
-  { label: "Manual de Código de Conduta", href: "/manual-de-codigo-de-conduta" },
-  { label: "Nota Institucional", href: "/nota-institucional" },
-  { label: "Política Integrada", href: "/politica_integrada_assinada" },
-  {
-    label: "Relatório de Igualdade Salarial",
-    href: "/relatorio-de-iqualdade-salarial",
-  },
-  { label: "Política de Privacidade", href: "/politica-de-privacidade" },
-  { label: "Termos de Uso", href: "/termos-de-uso" },
-];
+export const MOBILE_EXTRA_LINKS: Array<{ label: string; href: string }> = [];
 
 export const SERVICE_SLUGS = [
   "acesso-por-cordas",
@@ -81,13 +70,7 @@ export const SERVICE_SLUGS = [
   "atestado-tecnico",
 ] as const;
 
-export const PDF_PAGE_MAP: Record<string, string> = {
-  "manual-de-codigo-de-conduta": "/assets/docs/manual-de-codigo-de-conduta.pdf",
-  "missao-visao-voleres": "/assets/docs/missao-visao-valores.pdf",
-  "nota-institucional": "/assets/docs/nota-institucional.pdf",
-  politica_integrada_assinada: "/assets/docs/politica-integrada-assinada.pdf",
-  "relatorio-de-iqualdade-salarial": "/assets/docs/relatorio-igualdade-salarial.pdf",
-};
+export const PDF_PAGE_MAP: Record<string, string> = {};
 
 export const DEFAULT_FAQ_BY_SLUG: Record<
   string,

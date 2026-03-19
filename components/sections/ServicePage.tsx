@@ -1,7 +1,7 @@
 import Link from "next/link";
 import FaqAccordion from "@/components/FaqAccordion";
-import HypnoticBackground from "@/components/HypnoticBackground";
 import SafeImage from "@/components/SafeImage";
+import ServiceHeroBackground from "@/components/ServiceHeroBackground";
 import WaveSep from "@/components/WaveSep";
 import type { PageContent } from "@/lib/content";
 import { WHATSAPP_URL } from "@/lib/site-config";
@@ -33,9 +33,6 @@ export default function ServicePage({ page }: ServicePageProps) {
   const galleryImages =
     page.images.length > 5 ? page.images.slice(1, 6) : page.images.slice(0, 5);
 
-  const faqTitle =
-    page.headings.find((heading) => heading.text.toLowerCase().includes("perguntas"))?.text ??
-    `Perguntas Frequentes sobre ${page.title}`;
   const detailHeading =
     page.headings.find(
       (heading) =>
@@ -51,8 +48,8 @@ export default function ServicePage({ page }: ServicePageProps) {
   return (
     <>
       {/* ─── HERO DARK FULL-BLEED ──────────────────────────────── */}
-      <section className="page-hero-banner">
-        <HypnoticBackground />
+      <section className="page-hero-banner page-hero-banner--service">
+        <ServiceHeroBackground />
         <div className="container" style={{ position: "relative", zIndex: 3 }}>
           <span className="pill-badge">Engenharia de Superfície</span>
           <h1
@@ -78,7 +75,7 @@ export default function ServicePage({ page }: ServicePageProps) {
             <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
               Faça um orçamento
             </Link>
-            <Link className="btn-outline-white" href="/contato">
+            <Link className="btn-outline-white" href="/#contato">
               Falar com especialista
             </Link>
           </div>
