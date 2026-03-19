@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SafeImage from "@/components/SafeImage";
+import WaveSep from "@/components/WaveSep";
 import type { PageContent } from "@/lib/content";
 import { CONTACT_INFO, WHATSAPP_URL } from "@/lib/site-config";
 import { normalizeText, stripHtml } from "@/lib/utils";
@@ -100,9 +101,10 @@ export default function GenericPage({ page }: GenericPageProps) {
   const legalContent = isLegalPage ? parseLegalContent(page) : null;
 
   return (
-    <div className="container">
-      <section className="section-block page-hero">
-        <div className="page-hero-inner" data-reveal>
+    <>
+      {/* ─── HERO DARK FULL-BLEED ──────────────────────────────── */}
+      <section className="page-hero-banner">
+        <div className="container">
           <span className="pill-badge">
             {isLegalPage ? "Documento institucional" : "A Ideal Soluções Anticorrosivas"}
           </span>
@@ -112,119 +114,121 @@ export default function GenericPage({ page }: GenericPageProps) {
         </div>
       </section>
 
-      {isLegalPage && legalContent ? (
-        <section className="section-block legal-layout">
-          <aside className="surface-panel legal-aside" data-reveal>
-            <h2>Índice</h2>
-            <nav aria-label={`Índice de ${page.title}`}>
-              {legalContent.sections.map((section) => (
-                <a href={`#${section.id}`} key={section.id}>
-                  {section.title}
-                </a>
-              ))}
-            </nav>
-            <div className="legal-meta">
-              <span>Última atualização</span>
-              <strong>{formatDateBR(page.modified)}</strong>
-            </div>
-          </aside>
-          <article className="surface-panel legal-article">
-            <div className="generic-content" data-reveal>
-              {legalContent.intro.length > 0
-                ? legalContent.intro.map((paragraph) => (
-                    <p key={paragraph}>{fillContactPlaceholders(paragraph)}</p>
-                  ))
-                : null}
-            </div>
-            {legalContent.sections.map((section) => (
-              <section className="legal-section" id={section.id} key={section.id} data-reveal>
-                <h3>{section.title}</h3>
-                {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{fillContactPlaceholders(paragraph)}</p>
+      <WaveSep fill="#ffffff" bg="#02264a" />
+
+      <div className="container">
+        {isLegalPage && legalContent ? (
+          <section className="section-block legal-layout">
+            <aside className="surface-panel legal-aside" data-reveal>
+              <h2>Índice</h2>
+              <nav aria-label={`Índice de ${page.title}`}>
+                {legalContent.sections.map((section) => (
+                  <a href={`#${section.id}`} key={section.id}>
+                    {section.title}
+                  </a>
                 ))}
-                {section.bullets.length > 0 ? (
-                  <ul>
-                    {section.bullets.map((bullet) => (
-                      <li key={bullet}>{fillContactPlaceholders(bullet)}</li>
-                    ))}
-                  </ul>
-                ) : null}
-              </section>
-            ))}
-          </article>
-        </section>
-      ) : (
-        <section className="section-block surface-panel">
-          <article className="generic-content" data-reveal>
-            {paragraphBlocks.length > 0 ? (
-              paragraphBlocks.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
-            ) : (
-              <p>
-                Conteúdo institucional disponível nesta página. Para mais detalhes, entre em contato
-                com o time da A Ideal.
+              </nav>
+              <div className="legal-meta">
+                <span>Última atualização</span>
+                <strong>{formatDateBR(page.modified)}</strong>
+              </div>
+            </aside>
+            <article className="surface-panel legal-article">
+              <div className="generic-content" data-reveal>
+                {legalContent.intro.length > 0
+                  ? legalContent.intro.map((paragraph) => (
+                      <p key={paragraph}>{fillContactPlaceholders(paragraph)}</p>
+                    ))
+                  : null}
+              </div>
+              {legalContent.sections.map((section) => (
+                <section className="legal-section" id={section.id} key={section.id} data-reveal>
+                  <h3>{section.title}</h3>
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{fillContactPlaceholders(paragraph)}</p>
+                  ))}
+                  {section.bullets.length > 0 ? (
+                    <ul>
+                      {section.bullets.map((bullet) => (
+                        <li key={bullet}>{fillContactPlaceholders(bullet)}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </section>
+              ))}
+            </article>
+          </section>
+        ) : (
+          <section className="section-block surface-panel">
+            <article className="generic-content" data-reveal>
+              {paragraphBlocks.length > 0 ? (
+                paragraphBlocks.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
+              ) : (
+                <p>
+                  Conteúdo institucional disponível nesta página. Para mais detalhes, entre em contato
+                  com o time da A Ideal.
+                </p>
+              )}
+            </article>
+          </section>
+        )}
+
+        {images.length > 0 ? (
+          <section className="section-block">
+            <div className="service-gallery">
+              {images.map((image) => (
+                <figure key={image.src} data-reveal>
+                  <SafeImage
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width ?? 800}
+                    height={image.height ?? 800}
+                    fallbackSrc="/assets/banner-oque-importa.png"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </figure>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {isLegalPage ? (
+          <div className="cta-strip">
+            <div>
+              <p className="cta-strip-title">
+                Dúvidas sobre<br />seus direitos?
               </p>
-            )}
-          </article>
-        </section>
-      )}
-
-      {images.length > 0 ? (
-        <section className="section-block">
-          <div className="service-gallery">
-            {images.map((image) => (
-              <figure key={image.src} data-reveal>
-                <SafeImage
-                  src={image.src}
-                  alt={image.alt}
-                  width={image.width ?? 800}
-                  height={image.height ?? 800}
-                  fallbackSrc="/assets/banner-oque-importa.png"
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </figure>
-            ))}
+              <p className="cta-strip-sub">
+                Para solicitações relacionadas à LGPD, termos e privacidade, fale com nosso canal
+                oficial de atendimento.
+              </p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-start" }}>
+              <Link className="btn-white" href={CONTACT_INFO.emailHref}>
+                {CONTACT_INFO.email}
+              </Link>
+              <Link className="btn-white" href={CONTACT_INFO.phoneHref}>
+                {CONTACT_INFO.phone}
+              </Link>
+            </div>
           </div>
-        </section>
-      ) : null}
-
-      {isLegalPage ? (
-        <section className="section-block surface-panel legal-contact" data-reveal>
-          <h2 className="display-title section-title" style={{ fontSize: "2rem" }}>
-            Dúvidas sobre seus direitos?
-          </h2>
-          <p className="section-subtitle">
-            Para solicitações relacionadas à LGPD, termos e privacidade, fale com nosso canal
-            oficial de atendimento.
-          </p>
-          <div className="legal-contact-actions">
-            <Link className="btn-outline" href={CONTACT_INFO.emailHref}>
-              {CONTACT_INFO.email}
-            </Link>
-            <Link className="btn-primary" href={CONTACT_INFO.phoneHref}>
-              {CONTACT_INFO.phone}
+        ) : (
+          <div className="cta-strip">
+            <div>
+              <p className="cta-strip-title">
+                Precisa de<br />apoio técnico?
+              </p>
+              <p className="cta-strip-sub">
+                Nossa equipe está pronta para detalhar escopo, metodologia de execução e estimativa
+                de prazo para o seu projeto industrial.
+              </p>
+            </div>
+            <Link className="btn-white" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              Fale com a equipe
             </Link>
           </div>
-        </section>
-      ) : (
-        <section className="section-block surface-panel" data-reveal>
-          <h2 className="display-title section-title" style={{ fontSize: "2rem" }}>
-            Precisa de apoio técnico?
-          </h2>
-          <p className="section-subtitle">
-            Nossa equipe está pronta para detalhar escopo, metodologia de execução e estimativa de
-            prazo para o seu projeto industrial.
-          </p>
-          <Link
-            className="btn-primary"
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
-            style={{ marginTop: 14 }}
-          >
-            Fale com a equipe
-          </Link>
-        </section>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }

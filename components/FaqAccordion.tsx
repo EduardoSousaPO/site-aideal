@@ -14,10 +14,12 @@ export default function FaqAccordion({ title, items }: FaqAccordionProps) {
   if (items.length === 0) return null;
 
   return (
-    <section className="faq-shell" data-reveal>
-      <h2 className="display-title section-title" style={{ color: "#fff", margin: 0 }}>
-        {title}
-      </h2>
+    <div className="faq-shell">
+      {title ? (
+        <h2 className="display-title section-title" style={{ margin: 0 }}>
+          {title}
+        </h2>
+      ) : null}
       <div className="faq-box">
         {items.map((item, index) => {
           const isOpen = openIndex === index;
@@ -39,6 +41,6 @@ export default function FaqAccordion({ title, items }: FaqAccordionProps) {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }

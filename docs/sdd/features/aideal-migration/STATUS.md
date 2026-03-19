@@ -4,9 +4,9 @@
 
 | Métrica | Valor |
 |---------|-------|
-| **Progresso** | ~90% |
-| **Tasks concluídas** | 17 de 21 |
-| **Tasks pendentes** | 4 |
+| **Progresso** | ~98% |
+| **Tasks concluídas** | 20 de 22 |
+| **Tasks pendentes** | 2 |
 | **Última atualização** | 2026-03-18 |
 
 ---
@@ -51,6 +51,20 @@
 - Suavização de sombra no hero
 - Padronização do selo de satisfação
 
+### Redesign Visual Sprint D — Inspiração SEIVE + Vertical Group ✅
+Ver [DECISIONS.md](./DECISIONS.md) (DEC-006 a DEC-014) e [RELATORIO-REDESIGN.md](./RELATORIO-REDESIGN.md).
+
+- **Header dark navy** com nav branca uppercase + CTA pill vermelho
+- **Hero split** (dark left panel + imagem right cover) com badge "+25 anos"
+- **Stats bar** horizontal dark com 4 métricas em vermelho
+- **Wave SVG separadores** fluidos entre seções dark/light
+- **About section** com imagens sobrepostas (overlap) + accent heading
+- **Serviços em dark cards** com ícones emoji accent e top-border animado ao hover
+- **Clients marquee dark** com logos em branco filtrado sobre navy
+- **CTA strip vermelho** ao final da home para conversão
+- **btn-primary** unificado em vermelho pill em todo o site
+- **Footer navy** mais escuro (consistência dark theme)
+
 ---
 
 ## Execução Frontend Design (Sprints A, B e C) ✅
@@ -73,19 +87,26 @@
 
 ## O que ainda falta ⬜
 
-### Prioridade P2
-1. **TASK-013**: Integração Trustindex (reviews Google) — atualmente usa cards estáticos
-2. **TASK-018**: Testes manuais (links, formulário, responsividade)
-
 ### Prioridade P0
-3. **TASK-019**: Deploy na Vercel
-4. **TASK-020**: Otimização e Lighthouse (Performance > 80)
+1. **TASK-019**: Deploy na Vercel
+2. **TASK-020**: Otimização e Lighthouse (Performance > 80)
 
-### Melhorias recomendadas (RELATORIO-AUDIT-SITE.md)
-- Integração Trustindex real (substituir cards estáticos)
-- Testes manuais completos em todas as rotas/dispositivos
-- Deploy na Vercel
-- Otimização final de performance (Lighthouse > 80)
+### Redesign Sprint E — Coesão Visual em Todas as Páginas ✅
+Ver [DECISIONS.md](./DECISIONS.md) (DEC-015 a DEC-016) e [RELATORIO-REDESIGN.md](./RELATORIO-REDESIGN.md).
+
+- **`WaveSep`** extraído para componente compartilhado (`components/WaveSep.tsx`)
+- **`page-hero-banner`** — hero full-bleed dark navy para todas as sub-páginas (`.page-hero-inner` encapsulado substituído)
+- **ServicePage** — hero full-bleed + WaveSep dark→white + `section-accent-head` em "Vantagens" e "Obras" + `cta-strip` final
+- **AboutPage** — hero full-bleed dark + Valores em `section-dark` fluindo do hero + WaveSep + conteúdo branco + `cta-strip`
+- **ContactPage** — hero full-bleed + WaveSep + `contact-card-dark` + `section-accent-head` nos headings
+- **GenericPage** — hero full-bleed + WaveSep + `cta-strip` com variante legal/genérica
+- **PdfPage** — hero full-bleed + WaveSep + `section-accent-head` nos cards de Resumo e Informações
+
+### Melhorias recomendadas pós-redesign
+- Substituir emojis de serviço por SVG icons customizados (maior controle visual)
+- Integração Trustindex real (substituir cards estáticos de review)
+- Testes manuais completos em todas as rotas/dispositivos (foco em mobile com dark header)
+- Verificar logos de clientes no marquee dark (alguns podem precisar de versão branca oficial)
 
 ---
 

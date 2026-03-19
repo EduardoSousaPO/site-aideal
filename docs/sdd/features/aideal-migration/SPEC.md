@@ -4,7 +4,7 @@
 - **Feature ID**: FEAT-001
 - **Autor**: SDD
 - **Data**: 2026-03-18
-- **Status**: Em desenvolvimento (≈80% concluído)
+- **Status**: Em desenvolvimento (≈95% concluído) — Sprint D (Redesign Visual) concluído
 - **Última atualização**: 2026-03-18
 
 ## Resumo

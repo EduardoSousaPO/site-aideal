@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
-import { CONTACT_INFO, WHATSAPP_URL } from "@/lib/site-config";
+import WaveSep from "@/components/WaveSep";
+import { CONTACT_INFO } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -11,74 +11,74 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="container">
-      <section className="section-block page-hero">
-        <div className="page-hero-inner">
-          <span className="pill-badge">Atendimento em todo o Brasil</span>
+    <>
+      {/* ─── HERO DARK FULL-BLEED ──────────────────────────────── */}
+      <section className="page-hero-banner">
+        <div className="container">
+          <span className="pill-badge">Contato</span>
           <h1 className="display-title section-title" style={{ marginTop: 18, color: "#fff" }}>
-            Solicite um
-            <span className="highlight"> Orçamento</span>
+            Fale com a
+            <span className="highlight"> A Ideal</span>
           </h1>
-          <p className="hero-text" style={{ maxWidth: 620 }}>
-            Envie os dados do seu projeto e nossa equipe comercial retorna com uma proposta
-            técnica aderente ao seu cenário de operação industrial.
+          <p className="hero-text" style={{ maxWidth: 620, color: "rgba(255,255,255,0.8)", marginTop: 12 }}>
+            Entre em contato para solicitar um orçamento ou esclarecer detalhes sobre os serviços
+            industriais da A Ideal.
           </p>
-          <div className="contact-sla" data-reveal>
-            Retorno comercial em até 1 dia útil.
-          </div>
         </div>
       </section>
 
-      <section className="section-block contact-grid">
-        <article className="contact-card" data-reveal>
-          <h2 className="display-title section-title" style={{ fontSize: "2.2rem" }}>
-            Canais de Contato
-          </h2>
-          <div className="contact-quick-actions">
-            <Link className="contact-quick-link" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-              WhatsApp
-            </Link>
-            <Link className="contact-quick-link" href={CONTACT_INFO.phoneHref}>
-              Ligar agora
-            </Link>
-            <Link className="contact-quick-link" href={CONTACT_INFO.emailHref}>
-              Enviar e-mail
-            </Link>
-          </div>
-          <div className="contact-list">
-            <p>
-              <strong>Telefone:</strong> <a href={CONTACT_INFO.phoneHref}>{CONTACT_INFO.phone}</a>
-            </p>
-            <p>
-              <strong>E-mail:</strong> <a href={CONTACT_INFO.emailHref}>{CONTACT_INFO.email}</a>
-            </p>
-            <p>
-              <strong>WhatsApp:</strong> {CONTACT_INFO.whatsapp}
-            </p>
-            <p>
-              <strong>Endereço:</strong> {CONTACT_INFO.address}
-            </p>
-          </div>
-          <div className="surface-panel" style={{ marginTop: 20, padding: 0, overflow: "hidden" }}>
-            <iframe
-              src={CONTACT_INFO.mapEmbed}
-              width="100%"
-              height="280"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mapa de localização A Ideal"
-              style={{ border: 0 }}
-            />
-          </div>
-        </article>
+      <WaveSep fill="#ffffff" bg="#02264a" />
 
-        <article className="surface-panel" data-reveal>
-          <h2 className="display-title section-title" style={{ fontSize: "2.2rem" }}>
-            Formulário
-          </h2>
-          <ContactForm />
-        </article>
-      </section>
-    </div>
+      {/* ─── GRID DE CONTATO ───────────────────────────────────── */}
+      <div className="container">
+        <section className="section-block contact-grid">
+          <article className="contact-card-dark" data-reveal>
+            <div className="section-accent-head" style={{ borderColor: "var(--brand-red)" }}>
+              <h2 className="display-title section-title" style={{ fontSize: "2.2rem", color: "#fff" }}>
+                Canais de Contato
+              </h2>
+            </div>
+            <div className="contact-list" style={{ marginTop: 20 }}>
+              <p>
+                <strong>Telefone:</strong>{" "}
+                <a href={CONTACT_INFO.phoneHref}>{CONTACT_INFO.phone}</a>
+              </p>
+              <p>
+                <strong>E-mail:</strong>{" "}
+                <a href={CONTACT_INFO.emailHref}>{CONTACT_INFO.email}</a>
+              </p>
+              <p>
+                <strong>WhatsApp:</strong> {CONTACT_INFO.whatsapp}
+              </p>
+              <p>
+                <strong>Endereço:</strong> {CONTACT_INFO.address}
+              </p>
+            </div>
+            <div style={{ marginTop: 20, borderRadius: 12, overflow: "hidden" }}>
+              <iframe
+                src={CONTACT_INFO.mapEmbed}
+                width="100%"
+                height="280"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa de localização A Ideal"
+                style={{ border: 0, display: "block" }}
+              />
+            </div>
+          </article>
+
+          <article className="surface-panel" data-reveal>
+            <div className="section-accent-head">
+              <h2 className="display-title section-title" style={{ fontSize: "2.2rem" }}>
+                Formulário
+              </h2>
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <ContactForm />
+            </div>
+          </article>
+        </section>
+      </div>
+    </>
   );
 }

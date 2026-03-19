@@ -22,16 +22,16 @@ export default function ScrollAnimations() {
       const staggerDelay = (index % 8) * 0.02;
       gsap.fromTo(
         element,
-        { autoAlpha: 0, y: 34 },
+        { autoAlpha: 0, y: 24 },
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.72,
+          duration: 0.6,
           delay: staggerDelay,
           ease: "power2.out",
           scrollTrigger: {
             trigger: element,
-            start: "top 86%",
+            start: "top 100%",
             once: true,
           },
         },
