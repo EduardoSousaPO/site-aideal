@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import IndustrialShowcasePanel from "@/components/IndustrialShowcasePanel";
 import WaveSep from "@/components/WaveSep";
 import type { PageContent } from "@/lib/content";
@@ -288,18 +289,7 @@ export default function HomeSections({
             </p>
           </div>
         </header>
-        <div className="review-grid">
-          {REVIEW_CARDS.map((review) => (
-            <article className="review-card" key={review.name} data-reveal>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                <strong style={{ fontSize: "1rem" }}>{review.name}</strong>
-                <span style={{ color: "#f7b500", fontSize: "1.1rem" }}>★★★★★</span>
-              </div>
-              <small style={{ color: "#6a7f96" }}>{review.date}</small>
-              <p style={{ color: "var(--ink-soft)", margin: 0 }}>{review.text}</p>
-            </article>
-          ))}
-        </div>
+        <GoogleReviewsWidget fallbackReviews={REVIEW_CARDS} />
       </section>
 
       {/* ─── CTA STRIP ───────────────────────────────────────────── */}
