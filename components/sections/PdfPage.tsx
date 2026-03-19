@@ -6,18 +6,7 @@ type PdfPageProps = {
   page: PageContent;
 };
 
-const PDF_SUMMARY_BY_SLUG: Record<string, string> = {
-  "manual-de-codigo-de-conduta":
-    "Diretrizes de conduta, ética e responsabilidades para atuação institucional e operacional.",
-  "missao-visao-voleres":
-    "Documento com direcionadores estratégicos da empresa: missão, visão e valores corporativos.",
-  "nota-institucional":
-    "Comunicado institucional com posicionamentos oficiais e informações relevantes ao público.",
-  politica_integrada_assinada:
-    "Política integrada com compromissos de qualidade, segurança, saúde e responsabilidade socioambiental.",
-  "relatorio-de-iqualdade-salarial":
-    "Relatório oficial com dados de igualdade salarial e critérios de acompanhamento institucional.",
-};
+const PDF_SUMMARY_BY_SLUG: Record<string, string> = {};
 
 function formatDateBR(dateValue: string): string {
   const parsedDate = new Date(dateValue);
