@@ -14,16 +14,22 @@ export const BRAND = {
 export const WHATSAPP_URL =
   "https://wa.me/556293089724?text=Tenho%20interesse%20em%20receber%20um%20orcamento";
 
+/** Slugs presentes no clone mas fora do escopo do site (não geram rota nem conteúdo). */
+export const EXCLUDED_FROM_SITE_SLUGS = [
+  "isolamento-termico",
+  "montagem-andaime-tobo-roll",
+] as const;
+
 export const CONTACT_INFO = {
-  phone: "(62) 3442-1958",
-  phoneHref: "tel:+556234421958",
+  phone: "(62) 9320-2560",
+  phoneHref: "tel:+556293202560",
   whatsapp: "(62) 9308-9724",
-  email: "contato@aideal.com.br",
-  emailHref: "mailto:contato@aideal.com.br",
+  email: "genildo@aideal.com.br",
+  emailHref: "mailto:genildo@aideal.com.br",
   address:
-    "Rua Apucarana, S/N, QD-66-A, Jardim Marista, Trindade - GO, CEP 75383-372",
+    "Rua Olinda, 200, Quadra 066-A Lote Área 1 — Setor Jardim Marista, Trindade - GO, CEP 75.383-558",
   mapEmbed:
-    "https://maps.google.com/maps?q=Rua%20Apucarana%20S%2FN%2C%20Trindade%2C%20GO&t=&z=13&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=Rua+Olinda%2C+200%2C+Trindade%2C+GO%2C+75383558&t=&z=16&ie=UTF8&iwloc=&output=embed",
   instagram: "https://www.instagram.com/aidealengenharia/",
   linkedin: "https://www.linkedin.com/company/a-ideal-engenharia/",
 };
@@ -63,8 +69,6 @@ export const SERVICE_SLUGS = [
   "piso-industrial-uretano",
   "piso-industrial-mma",
   "revestimento-de-borracha-liquida",
-  "isolamento-termico",
-  "montagem-andaime-tobo-roll",
   "montagem-de-quick-deck",
   "piso-industrial-epoxy",
   "atestado-tecnico",

@@ -63,7 +63,7 @@ export default function IndustrialShowcasePanel() {
       <div className="paint-showcase__halo" />
       <div className="paint-showcase__media">
         <Image
-          src="/assets/2149878738.webp"
+          src="/assets/WhatsApp%20Image%202026-03-30%20at%2009.57.29.jpeg"
           alt=""
           fill
           sizes="(max-width: 900px) 100vw, 560px"

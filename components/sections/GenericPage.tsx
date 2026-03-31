@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SafeImage from "@/components/SafeImage";
+import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
 import WaveSep from "@/components/WaveSep";
 import type { PageContent } from "@/lib/content";
 import { CONTACT_INFO, WHATSAPP_URL } from "@/lib/site-config";
@@ -224,6 +225,7 @@ export default function GenericPage({ page }: GenericPageProps) {
               </p>
             </div>
             <Link className="btn-white" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              <WhatsAppBrandIcon size={22} tone="brand" />
               Fale com a equipe
             </Link>
           </div>

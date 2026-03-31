@@ -36,10 +36,11 @@ export default function Footer() {
       <div className="container site-footer-grid">
         <div>
           <Image
-            src="/assets/logos/logo-aideal-peq-1.webp"
+            src="/assets/logos/logo-aideal.png"
             alt="Logo A Ideal"
-            width={250}
-            height={56}
+            width={280}
+            height={90}
+            style={{ width: "auto", maxWidth: 260, height: "auto", objectFit: "contain" }}
           />
           <p className="footer-title" style={{ marginTop: 18 }}>
             Redes Sociais

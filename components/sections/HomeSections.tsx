@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import FachadaHeroCarousel from "@/components/FachadaHeroCarousel";
 import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import IndustrialShowcasePanel from "@/components/IndustrialShowcasePanel";
+import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
 import WaveSep from "@/components/WaveSep";
 import type { PageContent } from "@/lib/content";
 import { REVIEW_CARDS, WHATSAPP_URL } from "@/lib/site-config";
@@ -66,6 +68,7 @@ export default function HomeSections({
 
           <div className="hero-split-actions">
             <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              <WhatsAppBrandIcon size={22} />
               Faça um orçamento
             </Link>
             <Link className="btn-outline-white" href="/sobre-nos">
@@ -74,7 +77,7 @@ export default function HomeSections({
           </div>
 
           <div className="hero-split-chips">
-            <span className="hero-chip">✓ +25 anos de experiência</span>
+            <span className="hero-chip">✓ + de 28 anos atendendo todo o Brasil</span>
             <span className="hero-chip">✓ Atuação nacional</span>
             <span className="hero-chip">✓ ISO certificado</span>
           </div>
@@ -82,15 +85,9 @@ export default function HomeSections({
 
         {/* Right: imagem */}
         <div className="hero-split-media">
-          <div className="hero-split-media-stage">
+          <div className="hero-split-media-stage hero-split-media-stage--carousel">
             <div className="hero-split-media-overlay" />
-            <Image
-              src="/assets/bandesk5.webp"
-              alt="Aplicação de pintura industrial pela equipe A Ideal"
-              fill
-              priority
-              style={{ objectFit: "contain", objectPosition: "center center" }}
-            />
+            <FachadaHeroCarousel alt="Fachada e instalações da A Ideal Soluções Anticorrosivas" />
           </div>
         </div>
       </section>
@@ -113,7 +110,7 @@ export default function HomeSections({
               </h2>
             </div>
             <p className="especialistas-text">
-              Com mais de 25 anos de experiência no mercado industrial, a A Ideal oferece
+              Com mais de 28 anos de experiência no mercado industrial, a A Ideal oferece
               soluções técnicas de alta performance, durabilidade e acabamento superior para
               os ambientes mais exigentes do Brasil.
             </p>
@@ -130,6 +127,7 @@ export default function HomeSections({
               ))}
             </ul>
             <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              <WhatsAppBrandIcon size={22} />
               Falar com um especialista
             </Link>
           </div>
@@ -210,7 +208,8 @@ export default function HomeSections({
                 </span>
               ))}
             </div>
-            <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer" style={{ display: "inline-flex" }}>
+            <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              <WhatsAppBrandIcon size={22} />
               Solicitar visita técnica
             </Link>
           </div>
@@ -302,6 +301,7 @@ export default function HomeSections({
             </p>
           </div>
           <Link className="btn-white" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            <WhatsAppBrandIcon size={22} tone="brand" />
             Falar agora no WhatsApp
           </Link>
         </div>

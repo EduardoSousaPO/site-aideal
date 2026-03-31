@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
 import { WHATSAPP_URL } from "@/lib/site-config";
 
 type ReviewFallback = {
@@ -110,6 +111,7 @@ export default function GoogleReviewsWidget({
         />
         <div style={{ display: "flex", justifyContent: "center", marginTop: 28 }}>
           <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            <WhatsAppBrandIcon size={22} />
             Faça um orçamento
           </Link>
         </div>
@@ -138,6 +140,7 @@ export default function GoogleReviewsWidget({
       </div>
       <div style={{ display: "flex", justifyContent: "center", marginTop: 28 }}>
         <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+          <WhatsAppBrandIcon size={22} />
           Faça um orçamento
         </Link>
       </div>

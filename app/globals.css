@@ -527,7 +527,7 @@ img {
 
 .hero-split-media-stage {
   aspect-ratio: 1920 / 768;
-  background: transparent;
+  background: rgba(2, 38, 74, 0.35);
   border: 0;
   border-radius: 32px;
   box-shadow: 0 34px 80px rgba(0, 8, 22, 0.2);
@@ -537,7 +537,93 @@ img {
   width: min(calc(100% + clamp(120px, 9vw, 220px)), 1240px);
 }
 
-.hero-split-media-stage img {
+.hero-split-media-stage--carousel .hero-split-media-overlay {
+  z-index: 3;
+}
+
+/* Carrossel fachada: fade + slide */
+.fachada-slide-pane {
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.fachada-slide-pane__img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.06);
+  transform-origin: center center;
+  width: 100%;
+}
+
+.fachada-slide-pane--idle {
+  opacity: 0;
+  transform: translateX(12px);
+  transition: none;
+}
+
+.fachada-slide-pane--instant {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  z-index: 2;
+}
+
+.fachada-slide-pane--active {
+  animation: fachada-slide-in 0.88s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.fachada-slide-pane--leaving {
+  animation: fachada-slide-out 0.88s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 1;
+}
+
+@keyframes fachada-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(3.5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fachada-slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-3.5%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fachada-slide-pane--active,
+  .fachada-slide-pane--leaving {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+
+  .fachada-slide-pane--active {
+    opacity: 1;
+    transform: none;
+  }
+
+  .fachada-slide-pane--leaving {
+    opacity: 0;
+    transform: none;
+  }
+}
+
+.hero-split-media-stage:not(.hero-split-media-stage--carousel) img {
   height: 100%;
   object-fit: contain;
   object-position: center center;
@@ -954,6 +1040,7 @@ img {
   font-family: var(--font-body), sans-serif;
   font-size: 0.92rem;
   font-weight: 800;
+  gap: 10px;
   justify-content: center;
   letter-spacing: 0.04em;
   min-height: 52px;
@@ -3372,6 +3459,39 @@ img {
   right: max(18px, env(safe-area-inset-right));
   width: 58px;
   z-index: 70;
+}
+
+.wa-floating .whatsapp-brand-icon--animated {
+  animation-duration: 2.8s;
+}
+
+/* Ícone WhatsApp com leve “balanço” contínuo */
+@keyframes whatsapp-icon-nudge {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(-10deg) scale(1.06);
+  }
+  40% {
+    transform: rotate(8deg) scale(1.06);
+  }
+  60% {
+    transform: rotate(-5deg) scale(1.03);
+  }
+}
+
+.whatsapp-brand-icon--animated {
+  animation: whatsapp-icon-nudge 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+  transform-origin: 50% 55%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-brand-icon--animated {
+    animation: none;
+  }
 }
 
 .cookie-banner {

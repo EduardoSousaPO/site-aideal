@@ -2,6 +2,7 @@ import Link from "next/link";
 import FaqAccordion from "@/components/FaqAccordion";
 import SafeImage from "@/components/SafeImage";
 import ServiceHeroBackground from "@/components/ServiceHeroBackground";
+import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
 import WaveSep from "@/components/WaveSep";
 import type { FaqItem, PageContent } from "@/lib/content";
 import { WHATSAPP_URL } from "@/lib/site-config";
@@ -151,6 +152,7 @@ export default function ServicePage({ page }: ServicePageProps) {
           )}
           <div className="hero-actions" style={{ marginTop: 28 }}>
             <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              <WhatsAppBrandIcon size={22} />
               Faça um orçamento
             </Link>
             <Link className="btn-outline-white" href="/#contato">
@@ -249,6 +251,7 @@ export default function ServicePage({ page }: ServicePageProps) {
 
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 28 }}>
                   <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+                    <WhatsAppBrandIcon size={22} />
                     Solicitar atendimento
                   </Link>
                   <Link className="btn-outline" href="/#contato">
@@ -374,6 +377,7 @@ export default function ServicePage({ page }: ServicePageProps) {
                     target="_blank"
                     rel="noreferrer"
                   >
+                    <WhatsAppBrandIcon size={22} />
                     Solicitar orçamento
                   </Link>
                 </div>
@@ -430,6 +434,7 @@ export default function ServicePage({ page }: ServicePageProps) {
             </p>
           </div>
           <Link className="btn-white" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            <WhatsAppBrandIcon size={22} tone="brand" />
             Falar agora no WhatsApp
           </Link>
         </div>

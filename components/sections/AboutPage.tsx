@@ -2,6 +2,7 @@ import Link from "next/link";
 import AboutValueIcon from "@/components/AboutValueIcons";
 import SafeImage from "@/components/SafeImage";
 import WaveSep from "@/components/WaveSep";
+import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
 import type { PageContent } from "@/lib/content";
 import { ABOUT_VALUE_ITEMS, WHATSAPP_URL } from "@/lib/site-config";
 
@@ -144,6 +145,7 @@ export default function AboutPage({ page }: AboutPageProps) {
             </p>
           </div>
           <Link className="btn-white" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            <WhatsAppBrandIcon size={22} tone="brand" />
             Falar agora no WhatsApp
           </Link>
         </div>

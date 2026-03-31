@@ -3,6 +3,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import {
   DEFAULT_FAQ_BY_SLUG,
+  EXCLUDED_FROM_SITE_SLUGS,
   PDF_PAGE_MAP,
   SERVICE_SLUGS,
   WHATSAPP_URL,
@@ -11,6 +12,8 @@ import { normalizeText, stripHtml } from "@/lib/utils";
 
 const CONTENT_DIR = path.join(process.cwd(), "aideal-clone", "content", "pages");
 const CLIENT_LOGOS_DIR = path.join(process.cwd(), "public", "assets", "clients");
+
+const excludedFromSiteSlugSet = new Set<string>(EXCLUDED_FROM_SITE_SLUGS);
 
 const RAW_TO_CANONICAL_SLUG: Record<string, string> = {
   "home-aideal": "home",
@@ -263,7 +266,18 @@ function transformRawPage(raw: RawPage): PageContent {
 }
 
 const loadAllPages = cache(async (): Promise<PageContent[]> => {
-  const files = await fs.readdir(CONTENT_DIR);
+  let files: string[];
+  try {
+    files = await fs.readdir(CONTENT_DIR);
+  } catch (err) {
+    const code = (err as NodeJS.ErrnoException)?.code;
+    if (code === "ENOENT") {
+      throw new Error(
+        `Conteúdo não encontrado: ${CONTENT_DIR}. Restaure com: git restore aideal-clone/content`,
+      );
+    }
+    throw err;
+  }
   const jsonFiles = files.filter((file) => file.endsWith(".json"));
 
   const rawPages = await Promise.all(
@@ -285,7 +299,12 @@ export async function getAllPages(): Promise<PageContent[]> {
 
 export async function getRouteSlugs(): Promise<string[]> {
   const pages = await loadAllPages();
-  return pages.filter((page) => page.slug !== "home").map((page) => page.slug);
+  return pages
+    .filter(
+      (page) =>
+        page.slug !== "home" && !excludedFromSiteSlugSet.has(page.slug),
+    )
+    .map((page) => page.slug);
 }
 
 export async function getHomePage(): Promise<PageContent | null> {
@@ -295,6 +314,7 @@ export async function getHomePage(): Promise<PageContent | null> {
 
 export async function getPageBySlug(slug: string): Promise<PageContent | null> {
   const canonicalSlug = canonicalizeSlug(slug);
+  if (excludedFromSiteSlugSet.has(canonicalSlug)) return null;
   const pages = await loadAllPages();
   return pages.find((page) => page.slug === canonicalSlug) ?? null;
 }

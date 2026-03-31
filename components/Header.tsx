@@ -4,6 +4,7 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
 import {
   MAIN_NAV,
   MOBILE_EXTRA_LINKS,
@@ -83,11 +84,12 @@ export default function Header() {
       <div className="container top-header-inner">
         <Link className="brand-logo" href="/" aria-label="Ir para home">
           <Image
-            src="/assets/logos/logo-aideal-peq.png"
+            src="/assets/logos/logo-aideal.png"
             alt="A Ideal Soluções Anticorrosivas"
-            width={220}
-            height={52}
+            width={280}
+            height={90}
             priority
+            style={{ width: "auto", height: "clamp(40px, 6vw, 52px)", objectFit: "contain" }}
           />
         </Link>
 
@@ -135,6 +137,7 @@ export default function Header() {
         </nav>
 
         <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+          <WhatsAppBrandIcon size={20} />
           Faça um orçamento
         </Link>
 
@@ -202,6 +205,7 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
             style={{ marginTop: 6 }}
           >
+            <WhatsAppBrandIcon size={20} />
             Faça um orçamento
           </Link>
         </div>
