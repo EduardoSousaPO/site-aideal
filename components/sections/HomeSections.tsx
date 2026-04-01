@@ -79,7 +79,7 @@ export default function HomeSections({
           <div className="hero-split-chips">
             <span className="hero-chip">✓ + de 28 anos atendendo todo o Brasil</span>
             <span className="hero-chip">✓ Atuação nacional</span>
-            <span className="hero-chip">✓ ISO certificado</span>
+            <span className="hero-chip">✓ Em fase de certificação</span>
           </div>
         </div>
 
