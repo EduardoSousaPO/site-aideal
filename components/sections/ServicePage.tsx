@@ -57,6 +57,26 @@ const ATESTADO_SEGMENTS = [
   "Petroquímica",
 ];
 
+/** Substitui a primeira imagem do CMS na coluna esquerda do layout de serviço. */
+const SERVICE_MAIN_IMAGE_OVERRIDES: Record<string, { src: string; alt: string }> = {
+  "pintura-industrial-anticorrosiva": {
+    src: "/assets/01.PNG",
+    alt: "Pintura industrial anticorrosiva — A Ideal Soluções Anticorrosivas",
+  },
+  "piso-industrial-uretano": {
+    src: "/assets/02.PNG",
+    alt: "Piso industrial em uretano — A Ideal Soluções Anticorrosivas",
+  },
+  "piso-industrial-mma": {
+    src: "/assets/03.PNG",
+    alt: "Piso industrial em MMA — A Ideal Soluções Anticorrosivas",
+  },
+  "piso-industrial-epoxy": {
+    src: "/assets/02.PNG",
+    alt: "Piso industrial em epóxi — A Ideal Soluções Anticorrosivas",
+  },
+};
+
 const ATESTADO_FAQ_ITEMS: FaqItem[] = [
   {
     question: "Quais certificações e qualificações a Ideal possui para atuar em ambientes industriais?",
@@ -83,6 +103,22 @@ const ATESTADO_FAQ_ITEMS: FaqItem[] = [
 export default function ServicePage({ page }: ServicePageProps) {
   const isAtestadoPage = page.slug === "atestado-tecnico";
   const heroImage = page.images[0];
+  const mainImageOverride = SERVICE_MAIN_IMAGE_OVERRIDES[page.slug];
+  const serviceLayoutHero = mainImageOverride
+    ? {
+        src: mainImageOverride.src,
+        alt: mainImageOverride.alt,
+        width: 1200,
+        height: 1600,
+      }
+    : heroImage
+      ? {
+          src: heroImage.src,
+          alt: heroImage.alt,
+          width: heroImage.width ?? 920,
+          height: heroImage.height ?? 920,
+        }
+      : null;
   const introParagraphs = page.paragraphs
     .filter(
       (paragraph) =>
@@ -314,12 +350,12 @@ export default function ServicePage({ page }: ServicePageProps) {
               style={{ padding: 0, background: "transparent", border: "none", boxShadow: "none" }}
             >
               <div className="service-hero-media" data-reveal>
-                {heroImage ? (
+                {serviceLayoutHero ? (
                   <SafeImage
-                    src={heroImage.src}
-                    alt={heroImage.alt}
-                    width={heroImage.width ?? 920}
-                    height={heroImage.height ?? 920}
+                    src={serviceLayoutHero.src}
+                    alt={serviceLayoutHero.alt}
+                    width={serviceLayoutHero.width}
+                    height={serviceLayoutHero.height}
                     fallbackSrc="/assets/banner-quem-somos.png"
                     style={{ borderRadius: 16, width: "100%", height: "100%", objectFit: "cover" }}
                   />
