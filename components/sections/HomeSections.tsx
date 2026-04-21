@@ -53,12 +53,20 @@ export default function HomeSections({
         <div className="hero-split-content">
           <span className="hero-split-eyebrow">Especialistas industriais</span>
 
-          <h1 className="hero-split-title">
-            Soluções
-            <span className="accent">anticorrosivas</span>
-            <span style={{ fontSize: "0.6em", display: "block", fontFamily: "var(--font-body)", textTransform: "none", fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.01em", marginTop: 8 }}>
-              para indústria de alta criticidade
-            </span>
+          <h1
+            className="hero-split-title"
+            style={{
+              textTransform: "none",
+              lineHeight: 1.18,
+              fontWeight: 700,
+              fontSize: "clamp(1.45rem, 4vw, 2.55rem)",
+            }}
+          >
+            Referência em{" "}
+            <span className="accent" style={{ display: "inline" }}>
+              soluções anti corrosivas
+            </span>{" "}
+            para indústrias de alta criticidade há mais de 28 anos.
           </h1>
 
           <p className="hero-split-desc">
@@ -79,7 +87,7 @@ export default function HomeSections({
           <div className="hero-split-chips">
             <span className="hero-chip">✓ + de 28 anos atendendo todo o Brasil</span>
             <span className="hero-chip">✓ Atuação nacional</span>
-            <span className="hero-chip">✓ Em fase de certificação</span>
+            <span className="hero-chip">✓ ISO em fase de certificação</span>
           </div>
         </div>
 

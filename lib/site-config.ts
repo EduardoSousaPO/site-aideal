@@ -48,6 +48,7 @@ export const SERVICE_DROPDOWN = [
     label: "Revestimento de Borracha líquida",
     href: "/revestimento-de-borracha-liquida",
   },
+  { label: "Piso Epóxi", href: "/piso-industrial-epoxy" },
 ];
 
 export const MAIN_NAV = [
