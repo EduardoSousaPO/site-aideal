@@ -3016,6 +3016,45 @@ img {
   padding: clamp(24px, 3vw, 40px);
 }
 
+.surface-panel.surface-panel--muted {
+  border: 1px dashed rgba(2, 38, 74, 0.15);
+  border-top: 4px solid var(--brand-red);
+}
+
+.not-found-hero {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.not-found-hero__watermark {
+  color: rgba(232, 0, 0, 0.12);
+  font-family: var(--font-display), sans-serif;
+  font-size: 160px;
+  font-weight: 400;
+  left: 50%;
+  line-height: 0.85;
+  pointer-events: none;
+  position: absolute;
+  top: clamp(12px, 3vw, 36px);
+  transform: translateX(-50%);
+  user-select: none;
+  z-index: 0;
+}
+
+.not-found-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.not-found-hero__sub {
+  margin: 0 auto;
+}
+
+.not-found-actions {
+  margin-top: 20px;
+}
+
 .page-hero {
   margin-top: 8px;
 }
