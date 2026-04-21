@@ -95,11 +95,16 @@ function fillContactPlaceholders(text: string): string {
     .replace(/Telefone:\s*\[\]/gi, `Telefone: ${CONTACT_INFO.phone}`);
 }
 
+function legalSectionsWithBody(sections: LegalSection[]) {
+  return sections.filter((section) => section.paragraphs.length > 0 || section.bullets.length > 0);
+}
+
 export default function GenericPage({ page }: GenericPageProps) {
   const isLegalPage = LEGAL_PAGE_SLUGS.has(page.slug);
   const paragraphBlocks = page.paragraphs.filter((paragraph) => paragraph.length > 0);
   const images = page.images.slice(0, 6);
   const legalContent = isLegalPage ? parseLegalContent(page) : null;
+  const legalSectionsRendered = legalContent ? legalSectionsWithBody(legalContent.sections) : [];
 
   return (
     <>
@@ -123,7 +128,7 @@ export default function GenericPage({ page }: GenericPageProps) {
             <aside className="surface-panel legal-aside" data-reveal>
               <h2>Índice</h2>
               <nav aria-label={`Índice de ${page.title}`}>
-                {legalContent.sections.map((section) => (
+                {legalSectionsRendered.map((section) => (
                   <a href={`#${section.id}`} key={section.id}>
                     {section.title}
                   </a>
@@ -142,21 +147,21 @@ export default function GenericPage({ page }: GenericPageProps) {
                     ))
                   : null}
               </div>
-              {legalContent.sections.map((section) => (
-                <section className="legal-section" id={section.id} key={section.id} data-reveal>
-                  <h3>{section.title}</h3>
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{fillContactPlaceholders(paragraph)}</p>
-                  ))}
-                  {section.bullets.length > 0 ? (
-                    <ul>
-                      {section.bullets.map((bullet) => (
-                        <li key={bullet}>{fillContactPlaceholders(bullet)}</li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </section>
-              ))}
+              {legalSectionsRendered.map((section) => (
+                  <section className="legal-section" id={section.id} key={section.id} data-reveal>
+                    <h3>{section.title}</h3>
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{fillContactPlaceholders(paragraph)}</p>
+                    ))}
+                    {section.bullets.length > 0 ? (
+                      <ul>
+                        {section.bullets.map((bullet) => (
+                          <li key={bullet}>{fillContactPlaceholders(bullet)}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </section>
+                ))}
             </article>
           </section>
         ) : (

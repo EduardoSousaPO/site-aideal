@@ -3827,10 +3827,11 @@ img {
   padding-top: 16px;
 }
 
+.legal-section h2,
 .legal-section h3 {
   color: #173b61;
   font-size: 1.15rem;
-  margin: 0;
+  margin: 2.5rem 0 0;
 }
 
 .legal-section p {
