@@ -3202,6 +3202,13 @@ img {
   grid-template-columns: minmax(0, 1fr) minmax(380px, 0.78fr);
 }
 
+@media (min-width: 681px) and (max-width: 900px) {
+  .about-wp-grid {
+    gap: 32px;
+    grid-template-columns: 1fr;
+  }
+}
+
 .about-wp-copy {
   display: grid;
   gap: 20px;
@@ -3311,6 +3318,7 @@ img {
 }
 
 .about-values--icons {
+  align-items: start;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -3323,7 +3331,7 @@ img {
   display: grid;
   gap: 14px;
   justify-items: center;
-  min-height: 184px;
+  min-height: 200px;
   padding: 24px 18px 20px;
   text-align: center;
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;

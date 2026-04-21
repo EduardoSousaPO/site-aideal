@@ -48,13 +48,13 @@ export default function AboutPage({ page }: AboutPageProps) {
               </h1>
               {introParagraph ? <p className="especialistas-text">{introParagraph}</p> : null}
               <div className="about-mission-grid">
-                {missionParagraph ? (
+                {missionParagraph?.trim() ? (
                   <article className="about-mini-card">
                     <h2>Missão</h2>
                     <p>{missionParagraph}</p>
                   </article>
                 ) : null}
-                {visionParagraph ? (
+                {visionParagraph?.trim() ? (
                   <article className="about-mini-card">
                     <h2>Visão</h2>
                     <p>{visionParagraph}</p>
@@ -69,6 +69,7 @@ export default function AboutPage({ page }: AboutPageProps) {
                 alt={primaryImage?.alt ?? "Equipe da A Ideal"}
                 width={Number(primaryImage?.width) || 900}
                 height={Number(primaryImage?.height) || 900}
+                sizes="(max-width: 680px) 100vw, 50vw"
                 fallbackSrc="/assets/banner-quem-somos.png"
                 style={{ width: "100%", height: "auto" }}
               />
