@@ -458,16 +458,16 @@ img {
 
 .hero-split-eyebrow {
   align-items: center;
-  background: rgba(232, 0, 0, 0.08);
+  background: rgba(232, 0, 0, 0.12);
   border: 1px solid rgba(232, 0, 0, 0.22);
   border-radius: 999px;
-  color: rgba(255, 160, 160, 0.95);
+  color: var(--brand-red);
   display: inline-flex;
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   min-height: 28px;
-  padding: 0 14px;
+  padding: 6px 12px;
   text-transform: uppercase;
   width: fit-content;
 }
@@ -576,7 +576,7 @@ img {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
 }
 
 .btn-outline-white {
@@ -4485,13 +4485,14 @@ img {
 
   .hero-split-actions {
     flex-direction: column;
+    gap: 12px;
     width: 100%;
   }
 
   .hero-split-actions .btn-primary,
   .hero-split-actions .btn-outline-white {
-    width: 100%;
     justify-content: center;
+    width: 100%;
   }
 
   .hero-grid,
