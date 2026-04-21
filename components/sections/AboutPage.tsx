@@ -46,6 +46,24 @@ export default function AboutPage({ page }: AboutPageProps) {
                 <span>Especialistas em</span>
                 <span className="highlight"> Pintura Industrial</span>
               </h1>
+              <p className="about-iso-cert-badge" role="note">
+                <svg
+                  className="about-iso-cert-badge__icon"
+                  width={16}
+                  height={16}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M12 2 4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span>ISO em fase de certificação</span>
+              </p>
               {introParagraph ? <p className="especialistas-text">{introParagraph}</p> : null}
               <div className="about-mission-grid">
                 {missionParagraph?.trim() ? (
