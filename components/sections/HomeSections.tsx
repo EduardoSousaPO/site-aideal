@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import FachadaHeroCarousel from "@/components/FachadaHeroCarousel";
+import ServiceCardSlugIcon from "@/components/ServiceCardSlugIcon";
 import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import IndustrialShowcasePanel from "@/components/IndustrialShowcasePanel";
 import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
@@ -22,7 +23,13 @@ function serviceCardDescription(page: PageContent): string {
         !paragraph.includes("?") &&
         !paragraph.toLocaleLowerCase("pt-BR").includes("entre em contato"),
     ) ?? "Solução técnica com execução especializada para ambientes industriais exigentes.";
-  return raw.length > 130 ? `${raw.slice(0, 127).trim()}...` : raw;
+  return raw.length > 88 ? `${raw.slice(0, 85).trim()}…` : raw;
+}
+
+function shortTrustLine(text: string, max = 68): string {
+  const t = text.trim();
+  if (t.length <= max) return t;
+  return `${t.slice(0, max - 1).trim()}…`;
 }
 
 function serviceDisplayName(page: PageContent): string {
@@ -53,25 +60,25 @@ export default function HomeSections({
         <div className="hero-split-content">
           <span className="hero-split-eyebrow">Especialistas industriais</span>
 
-          <h1
-            className="hero-split-title"
-            style={{
-              textTransform: "none",
-              lineHeight: 1.18,
-              fontWeight: 700,
-              fontSize: "clamp(1.45rem, 4vw, 2.55rem)",
-            }}
-          >
-            Referência em{" "}
-            <span className="accent" style={{ display: "inline" }}>
-              soluções anti corrosivas
-            </span>{" "}
-            para indústrias de alta criticidade há mais de 28 anos.
+          <h1 className="hero-split-title hero-split-title--editorial">
+            <span className="hero-split-title__years">Mais de 28 anos</span>
+            <span className="hero-split-title__main">
+              Referência em{" "}
+              <span className="accent accent--inline">soluções anti corrosivas</span>
+            </span>
+            <span className="hero-split-title__scope">
+              Indústrias de alta criticidade · atendimento em todo o Brasil
+            </span>
           </h1>
 
-          <p className="hero-split-desc">
-            Pintura industrial, jateamento, revestimentos anticorrosivos e acesso por cordas
-            com rastreabilidade técnica e excelência operacional em todo o Brasil.
+          <ul className="hero-capabilities" aria-label="Principais frentes de atuação">
+            <li>Pintura industrial</li>
+            <li>Jateamento</li>
+            <li>Revestimentos</li>
+            <li>Acesso por cordas</li>
+          </ul>
+          <p className="hero-split-desc hero-split-desc--compact">
+            Engenharia de superfície com rastreabilidade técnica e padrão operacional rigoroso.
           </p>
 
           <div className="hero-split-actions">
@@ -84,10 +91,9 @@ export default function HomeSections({
             </Link>
           </div>
 
-          <div className="hero-split-chips">
-            <span className="hero-chip">✓ + de 28 anos atendendo todo o Brasil</span>
-            <span className="hero-chip">✓ Atuação nacional</span>
-            <span className="hero-chip">✓ ISO em fase de certificação</span>
+          <div className="hero-split-chips hero-split-chips--lean">
+            <span className="hero-chip">Atuação nacional</span>
+            <span className="hero-chip">ISO em fase de certificação</span>
           </div>
         </div>
 
@@ -117,23 +123,27 @@ export default function HomeSections({
                 <span className="highlight"> Pintura Industrial</span>
               </h2>
             </div>
-            <p className="especialistas-text">
-              Com mais de 28 anos de experiência no mercado industrial, a A Ideal oferece
-              soluções técnicas de alta performance, durabilidade e acabamento superior para
-              os ambientes mais exigentes do Brasil.
+            <p className="especialistas-text especialistas-text--lead">
+              Engenharia de superfície para os ambientes industriais mais exigentes do Brasil —
+              performance, durabilidade e acabamento técnico.
             </p>
-            <ul className="checklist" style={{ marginBottom: 28 }}>
+            <div className="about-trust-grid">
               {(highlights.length > 0
                 ? highlights
                 : [
-                    "Qualidade garantida na prestação de serviços de engenharia de superfície.",
-                    "Equipe especializada para segmentos industriais de alta criticidade.",
-                    "Agilidade e eficiência operacional em projetos nacionais.",
+                    "Qualidade garantida em engenharia de superfície.",
+                    "Equipe focada em indústria de alta criticidade.",
+                    "Agilidade em projetos em todo o território nacional.",
                   ]
               ).map((highlight) => (
-                <li key={highlight}>{highlight}</li>
+                <div className="about-trust-item" key={highlight}>
+                  <span className="about-trust-item__mark" aria-hidden>
+                    ✓
+                  </span>
+                  <p>{shortTrustLine(highlight)}</p>
+                </div>
               ))}
-            </ul>
+            </div>
             <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
               <WhatsAppBrandIcon size={22} />
               Falar com um especialista
@@ -148,24 +158,26 @@ export default function HomeSections({
       {/* ─── SERVIÇOS (dark section) ─────────────────────────────── */}
       <section className="section-dark" id="servicos" aria-label="Nossos Serviços">
         <div className="container">
-          <header className="section-header section-header--centered" data-reveal style={{ marginBottom: 48 }}>
-            <div className="section-accent-head" style={{ borderColor: "var(--brand-red)", textAlign: "left", width: "100%" }}>
+          <header className="section-header section-header--centered section-header--services" data-reveal>
+            <div className="section-accent-head section-accent-head--services">
               <h2 className="display-title section-title" style={{ color: "#fff" }}>
                 Nossos
                 <span className="highlight"> Serviços</span>
               </h2>
             </div>
-            <p className="section-subtitle" style={{ color: "rgba(255,255,255,0.6)" }}>
-              Estrutura operacional completa para acesso por cordas, jateamento,
-              revestimentos anticorrosivos e manutenção de superfícies com rastreabilidade técnica.
+            <p className="section-subtitle section-subtitle--narrow" style={{ color: "rgba(255,255,255,0.58)" }}>
+              Cordas, jateamento, pintura e revestimentos — execução integrada com rastreabilidade.
             </p>
           </header>
 
           <div className="services-grid">
             {cards.map((page) => (
               <article className="service-card-dark" key={page.slug} data-reveal>
+                <span className="service-card-dark-icon" aria-hidden="true">
+                  <ServiceCardSlugIcon slug={page.slug} />
+                </span>
                 <h3>{serviceDisplayName(page)}</h3>
-                <p>{serviceCardDescription(page)}</p>
+                <p className="service-card-dark__excerpt">{serviceCardDescription(page)}</p>
                 <Link className="service-link" href={`/${page.slug}`}>
                   Saiba mais <span aria-hidden>→</span>
                 </Link>
@@ -197,9 +209,8 @@ export default function HomeSections({
                 <span className="highlight"> Brasil</span>
               </h2>
             </div>
-            <p style={{ color: "var(--ink-soft)", marginBottom: 28, lineHeight: 1.7, marginTop: 12 }}>
-              Da logística ao relatório técnico final, nossa equipe garante execução de excelência
-              em qualquer estado. Energia, mineração, alimentos e indústria de base.
+            <p className="map-section-lead">
+              Operação nacional com a mesma disciplina técnica da obra ao relatório final.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 32 }}>
               {["Energia elétrica", "Mineração", "Alimentos & Bebidas", "Infraestrutura"].map((seg) => (
@@ -231,8 +242,8 @@ export default function HomeSections({
             Empresas que
             <span className="highlight"> confiam</span> na A Ideal
           </h2>
-          <p className="section-subtitle" style={{ color: "rgba(255,255,255,0.6)", margin: "12px auto 0" }}>
-            Energia, mineração, alimentos, infraestrutura e indústria de base.
+          <p className="section-subtitle section-subtitle--narrow clients-dark-header__sub">
+            Grandes operações em energia, mineração, alimentos e infraestrutura.
           </p>
         </div>
 
@@ -291,8 +302,8 @@ export default function HomeSections({
                 <span className="highlight"> nós</span>
               </h2>
             </div>
-            <p className="section-subtitle" style={{ marginTop: 8 }}>
-              Avaliação Google: <strong>4.6 de 5</strong>, com base em 12 avaliações.
+            <p className="section-subtitle section-subtitle--narrow" style={{ marginTop: 8 }}>
+              <strong>4,6/5</strong> no Google · 12 avaliações
             </p>
           </div>
         </header>
