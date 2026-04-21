@@ -53,6 +53,7 @@ export default function GoogleReviewsWidget({
   const [widget, setWidget] = useState<WidgetPayload | null>(null);
   const [hasError, setHasError] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const marqueeFallbackReviews = [...fallbackReviews, ...fallbackReviews, ...fallbackReviews];
 
   useEffect(() => {
     let cancelled = false;
@@ -146,32 +147,30 @@ export default function GoogleReviewsWidget({
           Não foi possível carregar o widget em tempo real. Exibindo o fallback local.
         </p>
       ) : null}
-      <div className="review-grid">
-        {fallbackReviews.map((review) => {
-          const rating = review.rating ?? 5;
-          const dateLabel = review.dateIso ? getRelativeDate(review.dateIso) : review.date;
-          return (
-            <article
-              className="review-card review-card-v2"
-              key={`${review.name}-${review.dateIso ?? review.date}`}
-              data-reveal
-            >
-              <div className="review-card-v2__head">
-                <div className="review-card-v2__avatar" aria-hidden>
-                  {getInitials(review.name)}
-                </div>
-                <div className="review-card-v2__meta">
-                  <div className="review-card-v2__name-row">
-                    <strong>{review.name}</strong>
-                    <StarRow rating={rating} />
+      <div className="review-marquee" data-reveal aria-label="Depoimentos (fallback local)">
+        <div className="review-marquee-track" aria-hidden>
+          {marqueeFallbackReviews.map((review, idx) => {
+            const rating = review.rating ?? 5;
+            const dateLabel = review.dateIso ? getRelativeDate(review.dateIso) : review.date;
+            return (
+              <article className="review-card review-card-v2" key={`${review.name}-${idx}`}>
+                <div className="review-card-v2__head">
+                  <div className="review-card-v2__avatar" aria-hidden>
+                    {getInitials(review.name)}
                   </div>
-                  <span className="review-card-v2__date-chip">{dateLabel}</span>
+                  <div className="review-card-v2__meta">
+                    <div className="review-card-v2__name-row">
+                      <strong>{review.name}</strong>
+                      <StarRow rating={rating} />
+                    </div>
+                    <span className="review-card-v2__date-chip">{dateLabel}</span>
+                  </div>
                 </div>
-              </div>
-              <p className="review-card-v2__quote">{review.text}</p>
-            </article>
-          );
-        })}
+                <p className="review-card-v2__quote">{review.text}</p>
+              </article>
+            );
+          })}
+        </div>
       </div>
       <div className="review-fallback-cta">
         <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
