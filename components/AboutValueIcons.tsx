@@ -13,8 +13,8 @@ type AboutValueIconsProps = {
   className?: string;
 };
 
-const stroke = "#2c3139";
-const accent = "#ef1717";
+const stroke = "var(--ink-strong)";
+const accent = "var(--brand-red)";
 
 function IconFrame({ children, className }: { children: ReactNode; className?: string }) {
   return (
