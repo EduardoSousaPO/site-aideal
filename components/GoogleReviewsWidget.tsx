@@ -152,7 +152,7 @@ export default function GoogleReviewsWidget({
           const dateLabel = review.dateIso ? getRelativeDate(review.dateIso) : review.date;
           return (
             <article
-              className="review-card"
+              className="review-card review-card-v2"
               key={`${review.name}-${review.dateIso ?? review.date}`}
               data-reveal
             >
