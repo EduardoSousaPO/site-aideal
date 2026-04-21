@@ -172,12 +172,12 @@ export default function HomeSections({
         <div className="container">
           <header className="section-header section-header--centered section-header--services" data-reveal>
             <div className="section-accent-head section-accent-head--services">
-              <h2 className="display-title section-title" style={{ color: "#fff" }}>
+              <h2 className="display-title section-title">
                 Nossos
                 <span className="highlight"> Serviços</span>
               </h2>
             </div>
-            <p className="section-subtitle section-subtitle--narrow" style={{ color: "rgba(255,255,255,0.58)" }}>
+            <p className="section-subtitle section-subtitle--narrow">
               Cordas, jateamento, pintura e revestimentos — execução integrada com rastreabilidade.
             </p>
           </header>
@@ -224,17 +224,9 @@ export default function HomeSections({
             <p className="map-section-lead">
               Operação nacional com a mesma disciplina técnica da obra ao relatório final.
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 32 }}>
+            <div className="map-segment-chips">
               {["Energia elétrica", "Mineração", "Alimentos & Bebidas", "Infraestrutura"].map((seg) => (
-                <span key={seg} style={{
-                  background: "#fff",
-                  border: "1px solid var(--line)",
-                  borderRadius: 999,
-                  color: "var(--ink-strong)",
-                  fontSize: "0.82rem",
-                  fontWeight: 700,
-                  padding: "6px 16px",
-                }}>
+                <span key={seg} className="map-segment-chip">
                   {seg}
                 </span>
               ))}

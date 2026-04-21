@@ -1253,12 +1253,18 @@ img {
 
 .cta-strip-title {
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1.1;
   margin: 0;
   text-transform: uppercase;
+}
+
+@media (max-width: 680px) {
+  .cta-strip-title br {
+    display: none;
+  }
 }
 
 .cta-strip-sub {
@@ -1874,6 +1880,14 @@ img {
   margin-bottom: clamp(36px, 5vw, 52px);
 }
 
+.section-header--services .section-title {
+  color: #fff;
+}
+
+.section-header--services .section-subtitle--narrow {
+  color: rgba(255, 255, 255, 0.58);
+}
+
 .section-accent-head--services {
   border-color: var(--brand-red);
   margin-inline: auto;
@@ -2006,6 +2020,30 @@ img {
   display: grid;
   gap: 56px;
   grid-template-columns: 0.85fr 1.15fr;
+}
+
+@media (max-width: 900px) {
+  .map-layout {
+    align-items: flex-start;
+    gap: 24px;
+  }
+}
+
+.map-segment-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.map-segment-chip {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-strong);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 16px;
 }
 
 .map-section-wrap {
@@ -2940,6 +2978,12 @@ img {
   line-height: 1.6;
   margin: 0;
   overflow: hidden;
+}
+
+.review-fallback-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
 }
 
 .google-reviews-widget-shell {

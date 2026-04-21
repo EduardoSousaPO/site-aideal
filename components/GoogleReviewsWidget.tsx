@@ -173,7 +173,7 @@ export default function GoogleReviewsWidget({
           );
         })}
       </div>
-      <div style={{ display: "flex", justifyContent: "center", marginTop: 28 }}>
+      <div className="review-fallback-cta">
         <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
           <WhatsAppBrandIcon size={22} />
           Faça um orçamento
