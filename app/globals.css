@@ -1096,7 +1096,6 @@ img {
 
 /* ============================================================
    CLIENTS DARK MARQUEE - Inspirado em SEIVE
-   TODO(clientes): classes .logo-track-dark / .logo-pill-dark / animações logo-marquee
    mantidas como fallback quando USE_CLIENT_LOGOS_GRID = false em HomeSections.tsx
    ============================================================ */
 
@@ -2782,7 +2781,7 @@ img {
   }
 }
 
-/* Grid de clientes */
+  /* Grid de clientes */
 .clients-section {
   background: transparent;
 }
@@ -2819,6 +2818,27 @@ img {
   border-radius: 20px;
   overflow: hidden;
   padding: 18px 0;
+}
+
+.logo-marquee-track {
+  align-items: center;
+  display: flex;
+  gap: 34px;
+  width: max-content;
+  will-change: transform;
+}
+
+.logo-marquee-track--forward {
+  animation: logo-marquee 40s linear infinite;
+}
+
+.logo-marquee-track--reverse {
+  animation: logo-marquee-reverse 42s linear infinite;
+  margin-top: 24px;
+}
+
+.logo-marquee:hover .logo-marquee-track {
+  animation-play-state: paused;
 }
 
 .logo-track {

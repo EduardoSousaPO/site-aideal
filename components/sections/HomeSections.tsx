@@ -10,7 +10,7 @@ import type { PageContent } from "@/lib/content";
 import { REVIEW_CARDS, WHATSAPP_URL } from "@/lib/site-config";
 
 /** Logos clientes em grade estática (true) ou fileiras animadas (false). */
-const USE_CLIENT_LOGOS_GRID = true;
+const USE_CLIENT_LOGOS_GRID = false;
 
 type HomeSectionsProps = {
   homePage: PageContent;
@@ -278,42 +278,62 @@ export default function HomeSections({
             ))}
           </div>
         ) : (
-          <div style={{ overflow: "hidden", display: "flex", flexDirection: "column", gap: 24 }}>
-            <div style={{ overflow: "hidden" }}>
-              <div className="logo-track-dark logo-track-row1">
-                {(() => {
-                  const row1 = clientLogos.slice(0, Math.ceil(clientLogos.length / 2));
-                  return [...row1, ...row1].map((logoPath, idx) => (
-                    <div className="logo-pill-dark" key={`row1-${logoPath}-${idx}`}>
-                      <Image
-                        src={logoPath}
-                        alt="Logotipo de cliente A Ideal"
-                        width={120}
-                        height={44}
-                        style={{ objectFit: "contain" }}
-                      />
-                    </div>
-                  ));
-                })()}
-              </div>
+          <div className="logo-marquee" data-reveal aria-label="Principais clientes atendidos">
+            <div className="logo-marquee-track logo-marquee-track--forward" aria-hidden>
+              {clientLogos.map((logoPath, idx) => (
+                <div className="logo-pill-dark" key={`logo-marquee-fwd-a-${logoPath}-${idx}`}>
+                  <Image
+                    src={logoPath}
+                    alt="Logotipo de cliente A Ideal"
+                    width={120}
+                    height={44}
+                    loading="lazy"
+                    sizes="(max-width: 680px) 42vw, (max-width: 1024px) 28vw, 150px"
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              ))}
+              {clientLogos.map((logoPath, idx) => (
+                <div className="logo-pill-dark" key={`logo-marquee-fwd-b-${logoPath}-${idx}`}>
+                  <Image
+                    src={logoPath}
+                    alt="Logotipo de cliente A Ideal"
+                    width={120}
+                    height={44}
+                    loading="lazy"
+                    sizes="(max-width: 680px) 42vw, (max-width: 1024px) 28vw, 150px"
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              ))}
             </div>
-            <div style={{ overflow: "hidden" }}>
-              <div className="logo-track-dark logo-track-row2">
-                {(() => {
-                  const row2 = clientLogos.slice(Math.ceil(clientLogos.length / 2));
-                  return [...row2, ...row2].map((logoPath, idx) => (
-                    <div className="logo-pill-dark" key={`row2-${logoPath}-${idx}`}>
-                      <Image
-                        src={logoPath}
-                        alt="Logotipo de cliente A Ideal"
-                        width={120}
-                        height={44}
-                        style={{ objectFit: "contain" }}
-                      />
-                    </div>
-                  ));
-                })()}
-              </div>
+            <div className="logo-marquee-track logo-marquee-track--reverse" aria-hidden>
+              {clientLogos.map((logoPath, idx) => (
+                <div className="logo-pill-dark" key={`logo-marquee-rev-a-${logoPath}-${idx}`}>
+                  <Image
+                    src={logoPath}
+                    alt="Logotipo de cliente A Ideal"
+                    width={120}
+                    height={44}
+                    loading="lazy"
+                    sizes="(max-width: 680px) 42vw, (max-width: 1024px) 28vw, 150px"
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              ))}
+              {clientLogos.map((logoPath, idx) => (
+                <div className="logo-pill-dark" key={`logo-marquee-rev-b-${logoPath}-${idx}`}>
+                  <Image
+                    src={logoPath}
+                    alt="Logotipo de cliente A Ideal"
+                    width={120}
+                    height={44}
+                    loading="lazy"
+                    sizes="(max-width: 680px) 42vw, (max-width: 1024px) 28vw, 150px"
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         )}
