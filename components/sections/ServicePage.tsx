@@ -165,28 +165,11 @@ export default function ServicePage({ page }: ServicePageProps) {
       {/* ─── HERO DARK FULL-BLEED ──────────────────────────────── */}
       <section className="page-hero-banner page-hero-banner--service">
         <ServiceHeroBackground />
-        <div className="container" style={{ position: "relative", zIndex: 3 }}>
+        <div className="container">
           <span className="pill-badge">Engenharia de Superfície</span>
-          <h1
-            className="display-title section-title"
-            style={{ color: "#fff", marginTop: 20, maxWidth: 700, lineHeight: 1.05 }}
-          >
-            {page.title}
-          </h1>
-          {introParagraphs[0] && (
-            <p style={{
-              color: "rgba(255,255,255,0.72)",
-              fontSize: "clamp(0.96rem, 1.2vw, 1.1rem)",
-              lineHeight: 1.65,
-              margin: "16px 0 0",
-              maxWidth: 580,
-            }}>
-              {heroSummary && heroSummary.length > 140
-                ? heroSummary.slice(0, 137) + "..."
-                : heroSummary}
-            </p>
-          )}
-          <div className="hero-actions" style={{ marginTop: 28 }}>
+          <h1 className="display-title section-title service-hero-title">{page.title}</h1>
+          {heroSummary ? <p className="service-hero-lead">{heroSummary}</p> : null}
+          <div className="hero-actions service-hero-actions">
             <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
               <WhatsAppBrandIcon size={22} />
               Faça um orçamento
