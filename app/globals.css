@@ -1253,7 +1253,7 @@ img {
 
 .cta-strip-title {
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1.1;
