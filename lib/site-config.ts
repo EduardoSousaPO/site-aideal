@@ -132,16 +132,22 @@ export const REVIEW_CARDS = [
   {
     name: "Rafael Almeida",
     date: "há 3 meses",
+    dateIso: "2025-12-15",
+    rating: 5,
     text: "Empresa extremamente profissional. Atendimento rápido e execução técnica impecável.",
   },
   {
     name: "Juliana Costa",
     date: "há 5 meses",
+    dateIso: "2025-10-20",
+    rating: 5,
     text: "Equipe comprometida, organizada e com ótimo padrão de segurança em campo.",
   },
   {
     name: "Carlos Nascimento",
     date: "há 8 meses",
+    dateIso: "2025-07-10",
+    rating: 5,
     text: "Serviço entregue dentro do prazo e com qualidade acima do esperado.",
   },
 ];

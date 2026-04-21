@@ -80,7 +80,7 @@ export default function Footer() {
 
         <div>
           <p className="footer-title">Localização</p>
-          <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid rgba(255,255,255,.3)" }}>
+          <div className="site-footer-map">
             <iframe
               src={CONTACT_INFO.mapEmbed}
               width="100%"

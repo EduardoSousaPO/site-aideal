@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FACHADA_HERO_IMAGES } from "@/lib/fachada-hero";
+import { cn } from "@/lib/utils";
 
 const INTERVAL_MS = 5200;
 const CLEAR_LEAVING_MS = 920;
@@ -16,20 +17,23 @@ export default function FachadaHeroCarousel({ alt }: FachadaHeroCarouselProps) {
   const slides = FACHADA_HERO_IMAGES;
   const [active, setActive] = useState(0);
   const [leaving, setLeaving] = useState<number | null>(null);
+  const [paused, setPaused] = useState(false);
   /** Após a primeira troca, a foto 0 volta a usar animação de entrada. */
   const [hasCycled, setHasCycled] = useState(false);
 
-  useEffect(() => {
-    if (slides.length < 2) return undefined;
-    const id = window.setInterval(() => {
-      setHasCycled(true);
-      setActive((current) => {
-        setLeaving(current);
-        return (current + 1) % slides.length;
-      });
-    }, INTERVAL_MS);
-    return () => window.clearInterval(id);
+  const goNext = useCallback(() => {
+    setHasCycled(true);
+    setActive((current) => {
+      setLeaving(current);
+      return (current + 1) % slides.length;
+    });
   }, [slides.length]);
+
+  useEffect(() => {
+    if (slides.length < 2 || paused) return undefined;
+    const id = window.setInterval(goNext, INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [slides.length, paused, goNext]);
 
   useEffect(() => {
     if (leaving === null) return undefined;
@@ -37,8 +41,22 @@ export default function FachadaHeroCarousel({ alt }: FachadaHeroCarouselProps) {
     return () => window.clearTimeout(t);
   }, [leaving]);
 
+  const goTo = useCallback(
+    (index: number) => {
+      if (index === active || index < 0 || index >= slides.length) return;
+      setHasCycled(true);
+      setLeaving(active);
+      setActive(index);
+    },
+    [active, slides.length],
+  );
+
   return (
-    <>
+    <div
+      className="fachada-hero-carousel"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       {slides.map((src, i) => {
         const isActive = i === active;
         const isLeaving = i === leaving && i !== active;
@@ -63,6 +81,24 @@ export default function FachadaHeroCarousel({ alt }: FachadaHeroCarouselProps) {
           </div>
         );
       })}
-    </>
+
+      <div className="hero-split-media-overlay" aria-hidden />
+
+      {slides.length > 1 ? (
+        <div className="fachada-carousel-dots" role="tablist" aria-label="Navegação do carrossel da fachada">
+          {slides.map((src, i) => (
+            <button
+              key={src}
+              type="button"
+              role="tab"
+              aria-selected={i === active}
+              aria-label={`Foto ${i + 1} de ${slides.length}`}
+              className={cn("fachada-carousel-dot", i === active && "fachada-carousel-dot--active")}
+              onClick={() => goTo(i)}
+            />
+          ))}
+        </div>
+      ) : null}
+    </div>
   );
 }

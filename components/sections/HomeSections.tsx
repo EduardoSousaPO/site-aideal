@@ -9,6 +9,9 @@ import WaveSep from "@/components/WaveSep";
 import type { PageContent } from "@/lib/content";
 import { REVIEW_CARDS, WHATSAPP_URL } from "@/lib/site-config";
 
+/** Logos clientes em grade estática (true) ou fileiras animadas (false). */
+const USE_CLIENT_LOGOS_GRID = true;
+
 type HomeSectionsProps = {
   homePage: PageContent;
   servicePages: PageContent[];
@@ -92,15 +95,24 @@ export default function HomeSections({
           </div>
 
           <div className="hero-split-chips hero-split-chips--lean">
-            <span className="hero-chip">Atuação nacional</span>
-            <span className="hero-chip">ISO em fase de certificação</span>
+            <span className="hero-chip">
+              <span className="hero-chip__glyph" aria-hidden>
+                ✓
+              </span>
+              Atuação nacional
+            </span>
+            <span className="hero-chip">
+              <span className="hero-chip__glyph" aria-hidden>
+                ✓
+              </span>
+              ISO em fase de certificação
+            </span>
           </div>
         </div>
 
         {/* Right: imagem */}
         <div className="hero-split-media">
           <div className="hero-split-media-stage hero-split-media-stage--carousel">
-            <div className="hero-split-media-overlay" />
             <FachadaHeroCarousel alt="Fachada e instalações da A Ideal Soluções Anticorrosivas" />
           </div>
         </div>
@@ -239,54 +251,80 @@ export default function HomeSections({
       <div className="clients-dark-section" id="clientes">
         <div className="clients-dark-header">
           <h2 className="display-title section-title" style={{ color: "#fff" }} data-reveal>
-            Empresas que
-            <span className="highlight"> confiam</span> na A Ideal
+            {USE_CLIENT_LOGOS_GRID ? (
+              <>
+                Quem confia na
+                <span className="highlight"> A Ideal</span>
+              </>
+            ) : (
+              <>
+                Empresas que
+                <span className="highlight"> confiam</span> na A Ideal
+              </>
+            )}
           </h2>
           <p className="section-subtitle section-subtitle--narrow clients-dark-header__sub">
             Grandes operações em energia, mineração, alimentos e infraestrutura.
           </p>
         </div>
 
-        <div style={{ overflow: "hidden", display: "flex", flexDirection: "column", gap: 24 }}>
-          {/* Fileira 1: primeira metade dos logos */}
-          <div style={{ overflow: "hidden" }}>
-            <div className="logo-track-dark logo-track-row1">
-              {(() => {
-                const row1 = clientLogos.slice(0, Math.ceil(clientLogos.length / 2));
-                return [...row1, ...row1].map((logoPath, idx) => (
-                  <div className="logo-pill-dark" key={`row1-${logoPath}-${idx}`}>
-                    <Image
-                      src={logoPath}
-                      alt="Logotipo de cliente A Ideal"
-                      width={120}
-                      height={44}
-                      style={{ objectFit: "contain" }}
-                    />
-                  </div>
-                ));
-              })()}
+        {USE_CLIENT_LOGOS_GRID ? (
+          <div className="clients-logo-grid" data-reveal>
+            {clientLogos.map((logoPath) => (
+              <div className="clients-logo-grid__cell" key={logoPath}>
+                <Image
+                  src={logoPath}
+                  alt="Logotipo de cliente A Ideal"
+                  width={140}
+                  height={48}
+                  loading="lazy"
+                  sizes="(max-width: 680px) 42vw, (max-width: 1024px) 28vw, 150px"
+                  className="clients-logo-grid__img"
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ overflow: "hidden", display: "flex", flexDirection: "column", gap: 24 }}>
+            <div style={{ overflow: "hidden" }}>
+              <div className="logo-track-dark logo-track-row1">
+                {(() => {
+                  const row1 = clientLogos.slice(0, Math.ceil(clientLogos.length / 2));
+                  return [...row1, ...row1].map((logoPath, idx) => (
+                    <div className="logo-pill-dark" key={`row1-${logoPath}-${idx}`}>
+                      <Image
+                        src={logoPath}
+                        alt="Logotipo de cliente A Ideal"
+                        width={120}
+                        height={44}
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  ));
+                })()}
+              </div>
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <div className="logo-track-dark logo-track-row2">
+                {(() => {
+                  const row2 = clientLogos.slice(Math.ceil(clientLogos.length / 2));
+                  return [...row2, ...row2].map((logoPath, idx) => (
+                    <div className="logo-pill-dark" key={`row2-${logoPath}-${idx}`}>
+                      <Image
+                        src={logoPath}
+                        alt="Logotipo de cliente A Ideal"
+                        width={120}
+                        height={44}
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  ));
+                })()}
+              </div>
             </div>
           </div>
-          {/* Fileira 2: segunda metade dos logos (sem repetir os da fileira 1) */}
-          <div style={{ overflow: "hidden" }}>
-            <div className="logo-track-dark logo-track-row2">
-              {(() => {
-                const row2 = clientLogos.slice(Math.ceil(clientLogos.length / 2));
-                return [...row2, ...row2].map((logoPath, idx) => (
-                  <div className="logo-pill-dark" key={`row2-${logoPath}-${idx}`}>
-                    <Image
-                      src={logoPath}
-                      alt="Logotipo de cliente A Ideal"
-                      width={120}
-                      height={44}
-                      style={{ objectFit: "contain" }}
-                    />
-                  </div>
-                ));
-              })()}
-            </div>
-          </div>
-        </div>
+        )}
       </div>
 
       {/* ─── WAVE (dark → white) ─────────────────────────────────── */}

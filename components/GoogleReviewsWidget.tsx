@@ -3,12 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
+import { getInitials, getRelativeDate } from "@/lib/format";
 import { WHATSAPP_URL } from "@/lib/site-config";
 
 type ReviewFallback = {
   name: string;
   date: string;
   text: string;
+  dateIso?: string;
+  rating?: number;
 };
 
 type WidgetPayload = {
@@ -26,6 +29,23 @@ type WidgetError = {
 type GoogleReviewsWidgetProps = {
   fallbackReviews: ReviewFallback[];
 };
+
+function StarRow({ rating }: { rating: number }) {
+  const n = Math.min(5, Math.max(0, Math.round(rating)));
+  return (
+    <span className="review-card-v2__stars" aria-label={`${n} de 5 estrelas`}>
+      {Array.from({ length: 5 }, (_, i) => (
+        <span
+          key={i}
+          className={i < n ? "review-card-v2__star review-card-v2__star--on" : "review-card-v2__star"}
+          aria-hidden
+        >
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function GoogleReviewsWidget({
   fallbackReviews,
@@ -123,20 +143,35 @@ export default function GoogleReviewsWidget({
     <>
       {hasError ? (
         <p className="section-subtitle" style={{ marginTop: 8 }}>
-          Nao foi possivel carregar o widget em tempo real. Exibindo o fallback local.
+          Não foi possível carregar o widget em tempo real. Exibindo o fallback local.
         </p>
       ) : null}
       <div className="review-grid">
-        {fallbackReviews.map((review) => (
-          <article className="review-card" key={review.name} data-reveal>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-              <strong style={{ fontSize: "1rem" }}>{review.name}</strong>
-              <span style={{ color: "#f7b500", fontSize: "1.1rem" }}>★★★★★</span>
-            </div>
-            <small style={{ color: "#6a7f96" }}>{review.date}</small>
-            <p style={{ color: "var(--ink-soft)", margin: 0 }}>{review.text}</p>
-          </article>
-        ))}
+        {fallbackReviews.map((review) => {
+          const rating = review.rating ?? 5;
+          const dateLabel = review.dateIso ? getRelativeDate(review.dateIso) : review.date;
+          return (
+            <article
+              className="review-card"
+              key={`${review.name}-${review.dateIso ?? review.date}`}
+              data-reveal
+            >
+              <div className="review-card-v2__head">
+                <div className="review-card-v2__avatar" aria-hidden>
+                  {getInitials(review.name)}
+                </div>
+                <div className="review-card-v2__meta">
+                  <div className="review-card-v2__name-row">
+                    <strong>{review.name}</strong>
+                    <StarRow rating={rating} />
+                  </div>
+                  <span className="review-card-v2__date-chip">{dateLabel}</span>
+                </div>
+              </div>
+              <p className="review-card-v2__quote">{review.text}</p>
+            </article>
+          );
+        })}
       </div>
       <div style={{ display: "flex", justifyContent: "center", marginTop: 28 }}>
         <Link className="btn-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">

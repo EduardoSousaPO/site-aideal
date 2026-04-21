@@ -16,13 +16,13 @@ import { cn } from "@/lib/utils";
 
 const DROPDOWN_CLOSE_DELAY_MS = 280;
 
-function MenuIcon() {
+function MenuIcon({ open }: { open: boolean }) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M4 6H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <path d="M4 12H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <path d="M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
+    <span className={cn("menu-icon-hamburger", open && "menu-icon-hamburger--open")} aria-hidden>
+      <span className="menu-icon-hamburger__bar" />
+      <span className="menu-icon-hamburger__bar" />
+      <span className="menu-icon-hamburger__bar" />
+    </span>
   );
 }
 
@@ -143,12 +143,12 @@ export default function Header() {
 
         <button
           type="button"
-          aria-label="Abrir menu"
+          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={mobileOpen}
-          className="menu-button"
+          className={cn("menu-button", mobileOpen && "menu-button--open")}
           onClick={() => setMobileOpen((current) => !current)}
         >
-          <MenuIcon />
+          <MenuIcon open={mobileOpen} />
         </button>
       </div>
 

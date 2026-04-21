@@ -23,20 +23,40 @@ export default function FaqAccordion({ title, items }: FaqAccordionProps) {
       <div className="faq-box">
         {items.map((item, index) => {
           const isOpen = openIndex === index;
+          const panelId = `faq-panel-${index}`;
+          const questionId = `faq-question-${index}`;
           return (
             <article className="faq-item" key={item.question}>
               <button
                 type="button"
+                id={questionId}
                 className={`faq-question${isOpen ? " open" : ""}`}
                 aria-expanded={isOpen}
+                aria-controls={panelId}
                 onClick={() => setOpenIndex((current) => (current === index ? -1 : index))}
               >
                 <span>{item.question}</span>
                 <span className="faq-indicator" aria-hidden>
-                  {isOpen ? "−" : "+"}
+                  <svg className="faq-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M6 9L12 15L18 9"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </span>
               </button>
-              {isOpen ? <p className="faq-answer">{item.answer}</p> : null}
+              <div
+                id={panelId}
+                className={`faq-answer-panel${isOpen ? " faq-answer-panel--open" : ""}`}
+                role="region"
+                aria-labelledby={questionId}
+                aria-hidden={!isOpen}
+              >
+                <p className="faq-answer">{item.answer}</p>
+              </div>
             </article>
           );
         })}
