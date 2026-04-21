@@ -89,7 +89,7 @@ export default function Header() {
             width={280}
             height={90}
             priority
-            style={{ width: "auto", height: "clamp(40px, 6vw, 52px)", objectFit: "contain" }}
+            style={{ width: "auto", height: "clamp(48px, 6.5vw, 64px)", objectFit: "contain" }}
           />
         </Link>
 

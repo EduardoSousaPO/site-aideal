@@ -208,12 +208,12 @@ img {
   display: grid;
   gap: 24px;
   grid-template-columns: auto 1fr auto auto;
-  min-height: 84px;
+  min-height: 82px;
 }
 
 @media (max-width: 680px) {
   .top-header-inner {
-    min-height: 72px;
+    min-height: 70px;
     gap: 12px;
   }
 
@@ -236,7 +236,7 @@ img {
   }
 
   .brand-logo img {
-    max-width: 160px;
+    max-width: 200px;
     height: auto;
   }
 }

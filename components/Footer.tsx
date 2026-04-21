@@ -40,7 +40,7 @@ export default function Footer() {
             alt="Logo A Ideal"
             width={280}
             height={90}
-            style={{ width: "auto", maxWidth: 260, height: "auto", objectFit: "contain" }}
+            style={{ width: "auto", maxWidth: 320, height: "auto", objectFit: "contain" }}
           />
           <p className="footer-title" style={{ marginTop: 18 }}>
             Redes Sociais
