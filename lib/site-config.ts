@@ -27,9 +27,9 @@ export const CONTACT_INFO = {
   email: "genildo@aideal.com.br",
   emailHref: "mailto:genildo@aideal.com.br",
   address:
-    "Rua Olinda, 200, Quadra 066-A Lote Área 1 — Setor Jardim Marista, Trindade - GO, CEP 75.383-558",
+    "Rua Olinda, 200, Quadra 066-A Lote Área 1 — Bairro Setor Jardim Marista, Trindade - GO, CEP 75.383-558",
   mapEmbed:
-    "https://maps.google.com/maps?q=Rua+Olinda%2C+200%2C+Trindade%2C+GO%2C+75383558&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=Rua+Olinda%2C+200%2C+Setor+Jardim+Marista%2C+Trindade%2C+GO%2C+75383558&t=&z=16&ie=UTF8&iwloc=&output=embed",
   instagram: "https://www.instagram.com/aidealengenharia/",
   linkedin: "https://www.linkedin.com/company/a-ideal-engenharia/",
 };
