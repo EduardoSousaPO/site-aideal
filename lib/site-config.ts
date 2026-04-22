@@ -21,9 +21,9 @@ export const EXCLUDED_FROM_SITE_SLUGS = [
 ] as const;
 
 export const CONTACT_INFO = {
-  phone: "(62) 9320-2560",
-  phoneHref: "tel:+556293202560",
-  whatsapp: "(62) 9308-9724",
+  phone: "(62) 3442-1958",
+  phoneHref: "tel:+556234421958",
+  whatsapp: "+55 62 99308-9724",
   email: "genildo@aideal.com.br",
   emailHref: "mailto:genildo@aideal.com.br",
   address:
