@@ -59,6 +59,14 @@ const ATESTADO_SEGMENTS = [
 
 /** Substitui a primeira imagem do CMS na coluna esquerda do layout de serviço. */
 const SERVICE_MAIN_IMAGE_OVERRIDES: Record<string, { src: string; alt: string }> = {
+  "acesso-por-cordas": {
+    src: "/assets/acesso-cordas.PNG",
+    alt: "Acesso por cordas — A Ideal Soluções Anticorrosivas",
+  },
+  hidrojateamento: {
+    src: "/assets/hidrojateamento.PNG",
+    alt: "Hidrojateamento — A Ideal Soluções Anticorrosivas",
+  },
   "pintura-industrial-anticorrosiva": {
     src: "/assets/01.PNG",
     alt: "Pintura industrial anticorrosiva — A Ideal Soluções Anticorrosivas",
