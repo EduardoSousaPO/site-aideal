@@ -24,8 +24,8 @@ export const CONTACT_INFO = {
   phone: "(62) 3442-1958",
   phoneHref: "tel:+556234421958",
   whatsapp: "+55 62 99308-9724",
-  email: "genildo@aideal.com.br",
-  emailHref: "mailto:genildo@aideal.com.br",
+  email: "contato@aideal.com.br",
+  emailHref: "mailto:contato@aideal.com.br",
   address:
     "Rua Olinda, 200, Quadra 066-A Lote Área 1 — Bairro Setor Jardim Marista, Trindade - GO, CEP 75.383-558",
   mapEmbed:
