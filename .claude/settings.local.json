@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx next:*)",
+      "Bash(netstat -ano)",
+      "Bash(dir \"C:\\\\Users\\\\edusp\\\\Projetos_App_Desktop\\\\site-AIDEAL\\\\lib\")",
+      "Bash(grep -E \"\\\\.\\(webp|jpg|png\\)$\")"
+    ]
+  }
+}

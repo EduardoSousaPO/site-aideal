@@ -1,12 +1,15 @@
 {
-    "mcpServers": {
-      "supabase": {
-        "url": "https://mcp.supabase.com/mcp",
-        "headers": {}
-      },
-      "vercel": {
-        "url": "https://mcp.vercel.com"
-      }
+  "mcpServers": {
+    "supabase": {
+      "url": "https://mcp.supabase.com/mcp",
+      "headers": {}
+    },
+    "vercel": {
+      "url": "https://mcp.vercel.com"
+    },
+    "browsermcp": {
+      "command": "npx",
+      "args": ["@browsermcp/mcp@latest"]
     }
   }
-  
+}

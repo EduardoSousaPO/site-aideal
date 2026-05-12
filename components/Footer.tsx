@@ -75,7 +75,7 @@ export default function Footer() {
           <p>
             <Link href={CONTACT_INFO.emailHref}>{CONTACT_INFO.email}</Link>
           </p>
-          <p>{CONTACT_INFO.address}</p>
+          <p>Do centro do país para todo o Brasil!</p>
         </div>
 
         <div>
