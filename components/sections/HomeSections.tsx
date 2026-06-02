@@ -353,7 +353,7 @@ export default function HomeSections({
               </h2>
             </div>
             <p className="section-subtitle section-subtitle--narrow" style={{ marginTop: 8 }}>
-              <strong>4,6/5</strong> no Google · 12 avaliações
+              <strong>4,8/5</strong> no Google · 24 avaliações
             </p>
           </div>
         </header>

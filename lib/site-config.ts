@@ -128,27 +128,52 @@ export const DEFAULT_FAQ_BY_SLUG: Record<
   ],
 };
 
+/**
+ * Avaliações reais do perfil "AIDEAL GROUP" no Google (4,8 · 24 avaliações).
+ * Usadas como fallback local quando o widget Trustindex ao vivo não carrega.
+ */
 export const REVIEW_CARDS = [
   {
-    name: "Rafael Almeida",
-    date: "há 3 meses",
-    dateIso: "2025-12-15",
+    name: "Edhuardo Leonel Magnez",
+    date: "há 1 mês",
+    dateIso: "2026-04-16",
     rating: 5,
-    text: "Empresa extremamente profissional. Atendimento rápido e execução técnica impecável.",
+    text: "Excelente empresa, com atendimento rápido e eficiente, equipe muito profissional e atenciosa, serviços de alta qualidade — recomendo com confiança!",
   },
   {
-    name: "Juliana Costa",
-    date: "há 5 meses",
-    dateIso: "2025-10-20",
+    name: "João Álvaro Rapallo Junior",
+    date: "há 1 mês",
+    dateIso: "2026-04-18",
     rating: 5,
-    text: "Equipe comprometida, organizada e com ótimo padrão de segurança em campo.",
+    text: "A empresa nos atende com prazo, bom atendimento e alta qualidade na execução das suas atividades e no fornecimento de materiais. Muito responsável e atuante no quesito segurança, seguindo à risca todos os procedimentos.",
   },
   {
-    name: "Carlos Nascimento",
-    date: "há 8 meses",
-    dateIso: "2025-07-10",
+    name: "Ycaro Gomes",
+    date: "há 10 meses",
+    dateIso: "2025-08-02",
     rating: 5,
-    text: "Serviço entregue dentro do prazo e com qualidade acima do esperado.",
+    text: "Empresa com profissionais qualificados, com toda certeza está entre as melhores do país no seu segmento!",
+  },
+  {
+    name: "Alexander Morais",
+    date: "há 2 anos",
+    dateIso: "2024-05-01",
+    rating: 5,
+    text: "Empresa profissional com atendimento atencioso e qualidade assegurada nos processos de jateamento e pintura!",
+  },
+  {
+    name: "Edson Matos",
+    date: "há 2 anos",
+    dateIso: "2024-04-01",
+    rating: 5,
+    text: "Competência e organização… faz muita diferença.",
+  },
+  {
+    name: "Marcos Vinicius",
+    date: "há 10 meses",
+    dateIso: "2025-08-05",
+    rating: 5,
+    text: "Ótima empresa, de confiança!",
   },
 ];
 
