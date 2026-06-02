@@ -18,6 +18,7 @@ export const WHATSAPP_URL =
 export const EXCLUDED_FROM_SITE_SLUGS = [
   "isolamento-termico",
   "montagem-andaime-tobo-roll",
+  "montagem-de-quick-deck",
 ] as const;
 
 export const CONTACT_INFO = {
@@ -70,7 +71,6 @@ export const SERVICE_SLUGS = [
   "piso-industrial-uretano",
   "piso-industrial-mma",
   "revestimento-de-borracha-liquida",
-  "montagem-de-quick-deck",
   "piso-industrial-epoxy",
   "atestado-tecnico",
 ] as const;
