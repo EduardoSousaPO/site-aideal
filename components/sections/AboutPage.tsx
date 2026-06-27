@@ -4,7 +4,7 @@ import SafeImage from "@/components/SafeImage";
 import WaveSep from "@/components/WaveSep";
 import WhatsAppBrandIcon from "@/components/WhatsAppBrandIcon";
 import type { PageContent } from "@/lib/content";
-import { ABOUT_VALUE_ITEMS, WHATSAPP_URL } from "@/lib/site-config";
+import { ABOUT_MISSION, ABOUT_VALUE_ITEMS, ABOUT_VISION, WHATSAPP_URL } from "@/lib/site-config";
 
 type AboutPageProps = {
   page: PageContent;
@@ -15,23 +15,19 @@ export default function AboutPage({ page }: AboutPageProps) {
   const primaryImage = page.images[0];
   const secondaryImage = page.images.find((image) => image.width && image.width > 200 && image !== primaryImage);
   const introParagraph = summaryParagraphs[0];
-  const missionParagraph = summaryParagraphs[1];
-  const visionParagraph = summaryParagraphs[2];
   const valueNarrative = summaryParagraphs.find((paragraph) => paragraph.length > 260) ?? summaryParagraphs[3];
   const supportingParagraphs = summaryParagraphs.filter(
     (paragraph) =>
       paragraph !== introParagraph &&
-      paragraph !== missionParagraph &&
-      paragraph !== visionParagraph &&
       paragraph !== valueNarrative,
   );
   const valueIcons = [
-    "responsabilidade-social",
-    "valorizacao-humana",
-    "transparencia",
     "etica",
-    "qualidade",
     "pontualidade",
+    "qualidade",
+    "valorizacao-humana",
+    "responsabilidade-social",
+    "seguranca",
   ] as const;
 
   return (
@@ -66,18 +62,14 @@ export default function AboutPage({ page }: AboutPageProps) {
               </p>
               {introParagraph ? <p className="especialistas-text">{introParagraph}</p> : null}
               <div className="about-mission-grid">
-                {missionParagraph?.trim() ? (
-                  <article className="about-mini-card">
-                    <h2>Missão</h2>
-                    <p>{missionParagraph}</p>
-                  </article>
-                ) : null}
-                {visionParagraph?.trim() ? (
-                  <article className="about-mini-card">
-                    <h2>Visão</h2>
-                    <p>{visionParagraph}</p>
-                  </article>
-                ) : null}
+                <article className="about-mini-card">
+                  <h2>Missão</h2>
+                  <p>{ABOUT_MISSION}</p>
+                </article>
+                <article className="about-mini-card">
+                  <h2>Visão</h2>
+                  <p>{ABOUT_VISION}</p>
+                </article>
               </div>
             </article>
 

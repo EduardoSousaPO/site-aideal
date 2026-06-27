@@ -29,12 +29,6 @@ function serviceCardDescription(page: PageContent): string {
   return raw.length > 88 ? `${raw.slice(0, 85).trim()}…` : raw;
 }
 
-function shortTrustLine(text: string, max = 68): string {
-  const t = text.trim();
-  if (t.length <= max) return t;
-  return `${t.slice(0, max - 1).trim()}…`;
-}
-
 function serviceDisplayName(page: PageContent): string {
   if (page.slug === "piso-industrial-epoxy") return "Piso Industrial Epóxi";
   if (page.slug === "revestimento-de-borracha-liquida")
@@ -152,7 +146,7 @@ export default function HomeSections({
                   <span className="about-trust-item__mark" aria-hidden>
                     ✓
                   </span>
-                  <p>{shortTrustLine(highlight)}</p>
+                  <p>{highlight}</p>
                 </div>
               ))}
             </div>

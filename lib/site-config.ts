@@ -141,13 +141,6 @@ export const REVIEW_CARDS = [
     text: "Excelente empresa, com atendimento rápido e eficiente, equipe muito profissional e atenciosa, serviços de alta qualidade — recomendo com confiança!",
   },
   {
-    name: "João Álvaro Rapallo Junior",
-    date: "há 1 mês",
-    dateIso: "2026-04-18",
-    rating: 5,
-    text: "A empresa nos atende com prazo, bom atendimento e alta qualidade na execução das suas atividades e no fornecimento de materiais. Muito responsável e atuante no quesito segurança, seguindo à risca todos os procedimentos.",
-  },
-  {
     name: "Ycaro Gomes",
     date: "há 10 meses",
     dateIso: "2025-08-02",
@@ -177,11 +170,17 @@ export const REVIEW_CARDS = [
   },
 ];
 
+export const ABOUT_MISSION =
+  "Oferecer soluções anticorrosivas de alto desempenho em engenharia de superfície.";
+
+export const ABOUT_VISION =
+  "Ser referência nacional em excelência, inovação e confiabilidade no segmento de engenharia de superfícies.";
+
 export const ABOUT_VALUE_ITEMS = [
-  "Responsabilidade Social",
-  "Valorização Humana",
-  "Transparência",
-  "Ética",
-  "Qualidade",
-  "Pontualidade",
+  "Ética e transparência",
+  "Pontualidade e compromisso",
+  "Qualidade e inovação",
+  "Valorização das pessoas",
+  "Responsabilidade socioambiental",
+  "Acidente zero",
 ];

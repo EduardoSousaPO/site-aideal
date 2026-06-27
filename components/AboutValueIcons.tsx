@@ -6,7 +6,8 @@ type ValueIconKey =
   | "transparencia"
   | "etica"
   | "qualidade"
-  | "pontualidade";
+  | "pontualidade"
+  | "seguranca";
 
 type AboutValueIconsProps = {
   kind: ValueIconKey;
@@ -74,6 +75,15 @@ export default function AboutValueIcon({ kind, className }: AboutValueIconsProps
           <path d="M24.43 57C19.84 52.8 17 46.76 17 40C17 27.3 27.3 17 40 17" stroke={stroke} strokeWidth="3" strokeLinecap="round" />
           <path d="M40 28V40L32.5 47.5" stroke={stroke} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M46 52L51.5 57.5L63.5 45.5" stroke={accent} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+        </IconFrame>
+      );
+    case "seguranca":
+      return (
+        <IconFrame className={className}>
+          <path d="M16 47C16 33.75 26.75 23 40 23C53.25 23 64 33.75 64 47" stroke={stroke} strokeWidth="3" strokeLinejoin="round" />
+          <path d="M12 47H68" stroke={stroke} strokeWidth="3" strokeLinecap="round" />
+          <path d="M40 23V15" stroke={accent} strokeWidth="3" strokeLinecap="round" />
+          <path d="M31 33C33.5 30.5 36.5 29 40 29" stroke={accent} strokeWidth="3" strokeLinecap="round" />
         </IconFrame>
       );
     default:
