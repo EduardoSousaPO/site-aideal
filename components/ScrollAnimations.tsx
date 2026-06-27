@@ -19,16 +19,16 @@ export default function ScrollAnimations() {
 
     const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
     revealElements.forEach((element, index) => {
-      const staggerDelay = (index % 8) * 0.02;
+      const staggerDelay = (index % 8) * 0.04;
       gsap.fromTo(
         element,
-        { autoAlpha: 0, y: 24 },
+        { autoAlpha: 0, y: 28 },
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0.78,
           delay: staggerDelay,
-          ease: "power2.out",
+          ease: "expo.out",
           scrollTrigger: {
             trigger: element,
             start: "top 100%",

@@ -17,3 +17,7 @@ pnpm-debug.log*
 # Artefatos locais de auditoria e cópias de skills não versionadas
 artifacts/
 .cursor/skills/modern-frontend-design copy/
+.claude/
+.playwright-mcp/
+
+.vercel

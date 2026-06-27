@@ -80,10 +80,11 @@ export default function AboutValueIcon({ kind, className }: AboutValueIconsProps
     case "seguranca":
       return (
         <IconFrame className={className}>
-          <path d="M16 47C16 33.75 26.75 23 40 23C53.25 23 64 33.75 64 47" stroke={stroke} strokeWidth="3" strokeLinejoin="round" />
-          <path d="M12 47H68" stroke={stroke} strokeWidth="3" strokeLinecap="round" />
-          <path d="M40 23V15" stroke={accent} strokeWidth="3" strokeLinecap="round" />
-          <path d="M31 33C33.5 30.5 36.5 29 40 29" stroke={accent} strokeWidth="3" strokeLinecap="round" />
+          <path d="M13 47.5C13 51 15.5 52.5 19 52.5H61C64.5 52.5 67 51 67 47.5" stroke={stroke} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M21 47.5C21 34 29.5 24.5 40 24.5C50.5 24.5 59 34 59 47.5Z" stroke={stroke} strokeWidth="3" strokeLinejoin="round" />
+          <path d="M30.5 26.5V47.5" stroke={stroke} strokeWidth="2.4" strokeLinecap="round" />
+          <path d="M49.5 26.5V47.5" stroke={stroke} strokeWidth="2.4" strokeLinecap="round" />
+          <path d="M40 24V47.5" stroke={accent} strokeWidth="3.2" strokeLinecap="round" />
         </IconFrame>
       );
     default:

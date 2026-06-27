@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Sora } from "next/font/google";
+import { Saira_Condensed, Sora } from "next/font/google";
 import "@/app/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,15 +9,17 @@ import ScrollAnimations from "@/components/ScrollAnimations";
 import ScrollToHash from "@/components/ScrollToHash";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site-config";
 
-const displayFont = Bebas_Neue({
-  weight: "400",
+const displayFont = Saira_Condensed({
+  weight: ["400", "500", "600", "700"],
   variable: "--font-display",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const bodyFont = Sora({
   variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

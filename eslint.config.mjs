@@ -12,6 +12,7 @@ const config = [
       "node_modules/**",
       "next-env.d.ts",
       ".agents/**",
+      ".claude/**",
       ".cursor/**",
       "aideal-clone/**",
       "docs/**",
