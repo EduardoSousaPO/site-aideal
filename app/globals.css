@@ -548,6 +548,10 @@ img {
 
 .hero-split-title--editorial .accent--inline {
   display: inline;
+  /* "anticorrosivas" nunca pode quebrar no meio da palavra */
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .hero-split-title__years {
@@ -1939,6 +1943,11 @@ img {
   line-height: 1.5;
   margin-inline: auto;
   max-width: 32em;
+}
+
+.section-subtitle--caps {
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
 }
 
 .clients-dark-header__sub {

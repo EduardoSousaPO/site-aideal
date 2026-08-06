@@ -61,7 +61,7 @@ export default function HomeSections({
             <span className="hero-split-title__years">Mais de 28 anos</span>
             <span className="hero-split-title__main">
               Referência em{" "}
-              <span className="accent accent--inline">soluções anti corrosivas</span>
+              <span className="accent accent--inline">soluções anticorrosivas</span>
             </span>
             <span className="hero-split-title__scope">
               Indústrias de alta criticidade · atendimento em todo o Brasil
@@ -171,8 +171,8 @@ export default function HomeSections({
                 <span className="highlight"> Serviços</span>
               </h2>
             </div>
-            <p className="section-subtitle section-subtitle--narrow">
-              Cordas, jateamento, pintura e revestimentos — execução integrada com rastreabilidade.
+            <p className="section-subtitle section-subtitle--narrow section-subtitle--caps">
+              Jateamento, pintura e revestimentos — execução integrada com rastreabilidade.
             </p>
           </header>
 
